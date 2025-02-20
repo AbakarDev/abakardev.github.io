@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="slide.css" />
+    <title>Mon porte-feuille</title>
+  </head>
+  <body>
+    <!-- Section 1 : En-tête -->
+    <header>
+      <a href="#home" class="logo"> <img src="logo.jpg" alt="" /></a>
+      <div class="bx bx-menu" id="menu-icon"></div>
+      <ul class="navbar">
+        <li><a href="#home">Accueil</a></li>
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#Slide">Galerie d'images</a></li>
+        <li><a href="#video">Vidéos</a></li>
+        <li><a href="#parcours">Mon Parcours</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <div class="bx bx-moon" id="modesombre"></div>
+      </ul>
+    </header>
+
+    <!-- Section 2 : Profil et Présentation -->
+    <main>
+      <section id="home">
+        <div class="container">
+          <div class="profile">
+            <img src="Abakar.jpg" alt="Photo de profil" />
+          </div>
+          <div class="presentation">
+            <div class="home-text">
+              <span>Bonjour, je m'appelle</span>
+              <h1>Abakar Brahim Abakar</h1>
+              <h2>Je suis un développeur web && mobile</h2>
+              <p>
+                Bienvenue sur mon site ! Découvrez mes projets et mes
+                compétences en développement web et mobile. Explorez mes
+                créations et l'impact de mon travail. N'hésitez pas à me
+                contacter pour toute collaboration ou question.
+                <br /><b>Merci de votre visite et à bientôt !</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="about" id="about">
+        <div class="heading">
+          <h2>À propos</h2>
+          <span>Introduction</span>
+        </div>
+        <!-- About Content -->
+        <div class="about-container">
+          <div class="about-text">
+            <p>
+              Je suis un étudiant en deuxième année de développement
+              d'applications web et mobiles à l'École nationale supérieure des
+              technologies de l'information et de la communication (ENASTIC).
+              <br />
+              Né le 1er janvier 2004 à DIBININTCHI, je suis passionné par la
+              technologie et le design.
+            </p>
+
+            <div class="information">
+              <!-- Box 1 -->
+              <div class="info-box">
+                <i class="bx bxs-user"></i>
+                <span>Abakar Brahim Abakar</span>
+              </div>
+              <!-- Box 2 -->
+              <div class="info-box">
+                <i class="bx bxs-phone"></i>
+                <span>(+235) 92253131 & & 66688968</span>
+              </div>
+              <!-- Box 3 -->
+              <div class="info-box">
+                <i class="bx bxs-envelope"></i>
+                <span>abakarbrahim702@gmail.com</span>
+              </div>
+            </div>
+            <!-- <a href="#" class="btn">Télécharger mon Cv</a> -->
+          </div>
+          <div class="about-img">
+            <img src="photo2.png" alt="" />
+          </div>
+        </div>
+      </section>
+      <!-- Section 3 : Carrousel d'images -->
+      <section id="Slide">
+        <h2>Mes Images</h2>
+        <div class="slideshow">
+          <div class="slideshow-container">
+            <button class="nav-icon prev">&#10094;</button>
+            <div class="image-container">
+              <img
+                src="/Images/photo (3).jpg"
+                alt="Beaux jours d'été"
+                data-title="Beaux jours d'été"
+                data-description="Les beaux jours d'été apportent avec eux une chaleur douce et agréable, idéale pour profiter des activités en extérieur. Le ciel dégagé et l'atmosphère détendue créent l'occasion parfaite pour partager des moments inoubliables avec vos proches."
+                class="active"
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <div class="image-container">
+              <img
+                src="/Images/photo (1).jpeg"
+                alt="Un vendredi matin"
+                data-title="Un vendredi matin"
+                data-description="Le vendredi matin, juste avant le début de la prière du vendredi (Joum ah), les rues se remplissent d'une atmosphère de calme et de sérénité. C'est un moment privilégié pour se recentrer et préparer son esprit à la journée."
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <div class="image-container">
+              <img
+                src="/Images/photo (2).png"
+                alt="Les vacances"
+                data-title="Les vacances"
+                data-description="Les vacances sont un véritable souffle de liberté, permettant à chacun de se reposer, de se détendre et de découvrir de nouveaux horizons. C'est aussi l'occasion de passer des moments précieux avec ses amis et sa famille, loin des préoccupations quotidiennes."
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <div class="image-container">
+              <img
+                src="/Images/photo (4).jpg"
+                alt="Événement spécial"
+                data-title="Événement spécial"
+                data-description="Un événement spécial entre amis, avec de la musique, des rires et une ambiance joyeuse. C'est un moment de partage, de bonheur et de convivialité qui restera gravé dans les mémoires."
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <div class="image-container">
+              <img
+                src="/Images/photo (5).jpg"
+                alt="La rentrée scolaire"
+                data-title="La rentrée scolaire"
+                data-description="La rentrée en deuxième année est un tournant dans le parcours universitaire. Après un été de repos, les étudiants reviennent sur le campus avec une nouvelle énergie, prêts à relever de nouveaux défis et à approfondir leurs connaissances."
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <div class="image-container">
+              <img
+                src="/Images/photo (6).jpg"
+                alt="Soirée familiale"
+                data-title="Soirée familiale"
+                data-description="Une soirée avec les proches, où l'on partage des repas, des souvenirs et des rires. C'est l'occasion de renforcer les liens familiaux et de célébrer les moments précieux de la vie."
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <div class="image-container">
+              <img
+                src="/Images/photo (7).jpg"
+                alt="Exploration de la nature"
+                data-title="Exploration de la nature"
+                data-description="Explorer la nature est une expérience qui permet de se reconnecter avec soi-même. Les montagnes, les forêts et les lacs offrent des paysages spectaculaires et des moments de tranquillité loin du tumulte de la vie urbaine."
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <div class="image-container">
+              <img
+                src="/Images/photo (8).jpg"
+                alt="Soirée culturelle"
+                data-title="Soirée culturelle"
+                data-description="Une soirée riche en découvertes culturelles, où chaque instant est marqué par de nouvelles traditions, musiques et danses. Ces événements sont des occasions uniques de s'enrichir et de partager des expériences humaines."
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <div class="image-container">
+              <img
+                src="/Images/photo (9).jpg"
+                alt="Dernier Jour de Baccalauréat - Lycée Collège AL-ISRA (2022)"
+                data-title="Dernier Jour de Baccalauréat - Lycée Collège AL-ISRA (2022)"
+                data-description="
+
+Cette photo capture un moment mémorable et émouvant avec mes amis lors du dernier jour du baccalauréat en 2022 au Lycée Collège AL-ISRA. Après des années de travail acharné, de défis et de moments de camaraderie, nous avons célébré cette étape importante de notre vie. Entouré de mes amis les plus proches, ce jour-là symbolisait la fin d'une aventure scolaire et le début d'un nouveau chapitre. Entre rires, sourires et émotions partagées, nous avons immortalisé ces instants pour garder en mémoire ces souvenirs inoubliables qui resteront gravés à jamais dans nos cœurs. Un souvenir précieux de notre passage au lycée, marqué par la réussite et l'amitié.
+
+"
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <div class="image-container">
+              <img
+                src="/Images/photo (10).jpg"
+                alt="Détente à la plage"
+                data-title="Célébration des Élèves et Étudiants de Village Dibinintchi"
+                data-description="
+Chaque année, le Village Dibinintchi se réunit pour célébrer les réalisations académiques de ses élèves et étudiants. Cet événement est l'occasion de rendre hommage aux efforts, à la persévérance et à la détermination des jeunes talents de la communauté. Que ce soit pour la réussite aux examens, les progrès dans les études ou les projets exceptionnels réalisés, cette journée est marquée par des discours inspirants, des remises de prix et des moments de partage. Les familles, amis et enseignants se rassemblent pour encourager ces jeunes dans leur parcours et les motiver à poursuivre leurs rêves avec passion et ambition. C'est un moment de fierté collective, une véritable fête de l'éducation et de l'avenir de notre village."
+              />
+              <button class="details-button">Voir les détails</button>
+            </div>
+            <button class="nav-icon next">&#10095;</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 : Vidéo -->
+      <section id="video">
+        <div class="video-section">
+          <h2>Mes Vidéos</h2>
+          <iframe
+            src="/maVideo/CSS_Grid___Créer_une_galerie(1080p).mp4"
+            frameborder="2"
+            allowfullscreen
+          ></iframe>
+          <div class="video-links">
+            <a
+              href="https://www.youtube.com/watch?v=LeMvU1iie_E&t=5s"
+              target="_blank"
+            >
+              Visiter mon compte YouTube pour ma vidéo
+            </a>
+            <a href="maVideo/" target="_blank">
+              Accéder à mon répertoire de vidéos
+            </a>
+            <a href="/maVideo/CSS_Grid___Créer_une_galerie(1080p).mp4" download>
+              Télécharger ma vidéo locale
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5 : Parcours professionnel -->
+      <section id="parcours">
+        <div class="parcours">
+          <h2>Mon Parcours Professionnel et Scolaire</h2>
+          <ul>
+            <h3>Formation universitaire</h3>
+            <li>
+              <strong>2023-2024 :</strong> 1ère année de développement des
+              applications web et mobile(DAWM) à l'Ecole nationale supérieure
+              des technologies de l’informatique et de la communication
+              (ENASTIC)
+            </li>
+            <li>
+              <strong>2024-2025 :</strong> 2ème année développement des
+              applications web et mobile (DAWM) à l'Ecole nationale supérieure
+              des technologies de l’informatique et de la communication
+              (ENASTIC)
+            </li>
+          </ul>
+          <ul>
+            <h3>Études secondaires</h3>
+            <li><strong>2019-2021 :</strong> Lycée centre Koweïtien</li>
+            <li><strong>2021-2022 :</strong> Lycée privé AL-ISRA</li>
+          </ul>
+          <ul>
+            <h3>Collège</h3>
+            <li><strong>2015-2019 :</strong> Collège de DIBININTCHI</li>
+          </ul>
+          <ul>
+            <h3>École primaire</h3>
+            <li><strong>2009-2015 :</strong> École primaire de DIBININTCHI</li>
+          </ul>
+          <ul>
+            <h3>Diplômes obtenus</h3>
+            <li><strong>2018 :</strong> Brevet d’étude fondamentale (BEF)</li>
+            <li><strong>2022 :</strong> Baccalauréat série D</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 6 : Compétences -->
+      <section class="skills" id="skills">
+        <div class="heading">
+          <h2>Mes Compétences Techniques</h2>
+          <span>Voici mes compétences clés</span>
+        </div>
+        <div class="skills-container">
+          <div class="bars">
+            <div class="bars-box">
+              <h3>HTML</h3>
+              <span>94%</span>
+              <div class="light-bar"></div>
+              <div class="percent-bar html-bar"></div>
+            </div>
+            <div class="bars-box">
+              <h3>CSS</h3>
+              <span>80%</span>
+              <div class="light-bar"></div>
+              <div class="percent-bar css-bar"></div>
+            </div>
+            <div class="bars-box">
+              <h3>JavaScript</h3>
+              <span>40%</span>
+              <div class="light-bar"></div>
+              <div class="percent-bar js-bar"></div>
+            </div>
+            <div class="bars-box">
+              <h3>PHP</h3>
+              <span>20%</span>
+              <div class="light-bar"></div>
+              <div class="percent-bar php-bar"></div>
+            </div>
+            <div class="bars-box">
+              <h3>Python</h3>
+              <span>20%</span>
+              <div class="light-bar"></div>
+              <div class="percent-bar react-bar"></div>
+            </div>
+          </div>
+          <div class="skills-img">
+            <img src="OIP.jpg" alt="Compétences" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Section 7 : Footer -->
+    <footer>
+      <div class="footer">
+        <h2>Me Suivre</h2>
+        <div class="footer-social">
+          <a
+            href="https://www.facebook.com/profile.php?id=100070317761293"
+            target="_blank"
+          >
+            <i class="bx bxl-facebook"></i>
+          </a>
+          <a href="https://www.telegram.com" target="_blank">
+            <i class="bx bxl-telegram"></i>
+          </a>
+          <a href="https://www.youtube.com" target="_blank">
+            <i class="bx bxl-youtube"></i>
+          </a>
+          <a href="https://www.tiktok.com" target="_blank">
+            <i class="bx bxl-tiktok"></i>
+          </a>
+          <a href="https://github.com/Abakar702/" target="_blank">
+            <i class="bx bxl-github"></i>
+          </a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>
+          Créé par <a href="#">Développeur professionnel</a> | Tous droits
+          réservés.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Script JavaScript -->
+    <script src="slide.js"></script>
+  </body>
+</html>

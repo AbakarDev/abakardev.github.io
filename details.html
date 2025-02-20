@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="slide.css" />
+    <title>Détails de l'image</title>
+    <style>
+      body {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .details-container {
+        padding: 20px;
+        border-radius: 8px;
+        margin: 50px auto;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .details-container img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 8px;
+      }
+      .details-container h2 {
+        margin-top: 20px;
+      }
+      .details-container p {
+        font-size: 16px;
+        color: #555;
+      }
+      .back-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .back-button:hover {
+        background-color: #555;
+      }
+      p {
+        text-align: justify;
+      }
+      .image-containers {
+        background: var(--text-color);
+        box-shadow: -3px -3px 7px #ffffff73,
+          2px 2px 5px rgba(94, 104, 121, 0.288);
+        padding: 5px;
+        width: max-content;
+
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="details-container">
+      <div class="image-containers">
+        <img id="detail-image" src="" alt="Image du projet" />
+      </div>
+      <div class="texts">
+        <h2 id="detail-title"></h2>
+        <p id="detail-description"></p>
+        <a href="slide.html" class="back-button">Retour</a>
+      </div>
+    </div>
+
+    <script src="details.js"></script>
+  </body>
+</html>
