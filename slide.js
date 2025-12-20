@@ -75,33 +75,69 @@ document.addEventListener("DOMContentLoaded", function () {
   if (savedTheme === "dark") {
     document.body.classList.add("active");
     darkmode.classList.replace("bx-moon", "bx-sun");
-    document.querySelectorAll(".parcours li").forEach((elem) => {
-      elem.style.backgroundColor = "black";
-    });
+
   } else {
     document.body.classList.remove("active");
     darkmode.classList.replace("bx-sun", "bx-moon");
-    document.querySelectorAll(".parcours li").forEach((elem) => {
-      elem.style.backgroundColor = "#f4f4f4";
-    });
+
   }
 
   // Gestion du changement de thème
   darkmode.onclick = () => {
     if (darkmode.classList.contains("bx-moon")) {
       darkmode.classList.replace("bx-moon", "bx-sun");
-      document.querySelectorAll(".parcours li").forEach((elem) => {
-        elem.style.backgroundColor = "black";
-      });
+
       document.body.classList.add("active");
       localStorage.setItem("theme", "dark"); // Enregistrer le thème sombre
     } else {
       darkmode.classList.replace("bx-sun", "bx-moon");
-      document.querySelectorAll(".parcours li").forEach((elem) => {
-        elem.style.backgroundColor = "#f4f4f4";
-      });
+
       document.body.classList.remove("active");
       localStorage.setItem("theme", "light"); // Enregistrer le thème clair
     }
   };
+
+
+  // Skills Animation
+  const skillsSection = document.querySelector(".skills");
+  const progressBars = document.querySelectorAll(".percent-bar");
+  const counters = document.querySelectorAll(".counter");
+
+  function startSkillAnimation() {
+    progressBars.forEach((bar) => {
+      bar.classList.add("animate");
+    });
+
+    counters.forEach((counter) => {
+      const target = +counter.getAttribute("data-target");
+      const duration = 2000; // 2 seconds
+      const increment = target / (duration / 16); // 60fps
+
+      let current = 0;
+      const updateCounter = () => {
+        current += increment;
+        if (current < target) {
+          counter.innerText = Math.ceil(current) + "%";
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.innerText = target + "%";
+        }
+      };
+      updateCounter();
+    });
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        startSkillAnimation();
+        observer.disconnect(); // Run only once
+      }
+    },
+    { threshold: 0.1 }
+  );
+
+  if (skillsSection) {
+    observer.observe(skillsSection);
+  }
 });
