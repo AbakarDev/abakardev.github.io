@@ -693,6 +693,10 @@ footer {
     margin: 0 auto;
   }
 
+  .profile {
+    order: -1;
+  }
+
   h1 {
     font-size: 3rem;
   }

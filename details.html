@@ -82,6 +82,41 @@
     body.active .details-card {
       background: var(--card-bg);
     }
+
+    /* Responsive Details */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 5%;
+      }
+
+      .details-card {
+        padding: 1.5rem;
+        border-radius: 20px;
+      }
+
+      .details-content h2 {
+        font-size: 1.8rem;
+      }
+
+      .details-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .details-img-wrapper {
+        border-radius: 16px;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn-group .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
