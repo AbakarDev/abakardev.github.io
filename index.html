@@ -6,340 +6,342 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO Meta Tags -->
+  <title>Abakar Brahim Abakar | Développeur Web & Mobile</title>
   <meta name="description"
-    content="Portfolio de Abakar Brahim Abakar - Développeur Web & Mobile à l'ENASTIC. Découvrez mes projets, compétences et parcours." />
+    content="Découvrez le portfolio de Abakar Brahim Abakar, développeur d'applications web et mobiles à l'ENASTIC. Projets innovants et compétences techniques." />
   <meta name="keywords"
-    content="Abakar Brahim Abakar, Développeur Web, Mobile, Portfolio, ENASTIC, Tchad, HTML, CSS, JavaScript" />
+    content="Abakar Brahim Abakar, Développeur Web, Mobile, Portfolio, ENASTIC, Tchad, React, JavaScript" />
   <meta name="author" content="Abakar Brahim Abakar" />
-  <meta name="robots" content="index, follow" />
 
-  <!-- verification google search console -->
-  <meta name="google-site-verification" content="googleb06178cc0de32e0f" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="logo.jpeg">
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Portfolio de Abakar Brahim Abakar" />
-  <meta property="og:description"
-    content="Portfolio de Abakar Brahim Abakar - Développeur Web & Mobile à l'ENASTIC. Découvrez mes projets, compétences et parcours." />
-  <meta property="og:image" content="Images/pro_code.jpg" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Portfolio de Abakar Brahim Abakar" />
-  <meta name="twitter:description"
-    content="Portfolio de Abakar Brahim Abakar - Développeur Web & Mobile à l'ENASTIC. Découvrez mes projets, compétences et parcours." />
-  <meta name="twitter:image" content="Images/pro_code.jpg" />
+  <!-- Boxicons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
   <link rel="stylesheet" type="text/css" href="slide.css" />
-  <title>Mon porte-feuille</title>
 </head>
 
 <body>
-  <!-- Section 1 : En-tête -->
+  <!-- Navigation -->
   <header>
-    <a href="#home" class="logo"> <img src="logo.jpeg" alt="" /></a>
-    <div class="bx bx-menu" id="menu-icon"></div>
+    <a href="#home" class="logo">
+      <img src="logo.jpeg" alt="Logo ABA" />
+    </a>
+
     <ul class="navbar">
-      <li><a href="#home">Accueil</a></li>
+      <li><a href="#home" class="active">Accueil</a></li>
       <li><a href="#about">À propos</a></li>
       <li><a href="#portfolio">Projets</a></li>
-      <li><a href="#Slide">Galerie d'images</a></li>
-      <li><a href="#video">Vidéos</a></li>
-      <li><a href="#parcours">Mon Parcours</a></li>
-      <li><a href="#skills">Compétences</a></li>
-      <div class="bx bx-moon" id="modesombre"></div>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#Slide">Galerie</a></li>
+      <li><a href="#parcours">Parcours</a></li>
     </ul>
+
+    <div class="header-actions">
+      <i class="bx bx-moon" id="modesombre"></i>
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
   </header>
 
-  <!-- Section 2 : Profil et Présentation -->
   <main>
-    <section id="home">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
       <div class="container">
-        <div class="profile">
-          <img src="Abakar.jpeg" alt="Photo de profil" />
-        </div>
-        <div class="presentation">
-          <div class="home-text">
-            <span>Bonjour, je m'appelle</span>
-            <h1>Abakar Brahim Abakar</h1>
-            <h2>Je suis un développeur web && mobile</h2>
-            <p>
-              Bienvenue sur mon site ! Découvrez mes projets et mes
-              compétences en développement web et mobile. Explorez mes
-              créations et l'impact de mon travail. N'hésitez pas à me
-              contacter pour toute collaboration ou question.
-              <br /><b>Merci de votre visite et à bientôt !</b>
-            </p>
+        <div class="home-text">
+          <span>Développeur Passionné</span>
+          <h1>Abakar Brahim Abakar</h1>
+          <h2>Concevoir des expériences numériques d'exception</h2>
+          <p>
+            Étudiant en 2ème année à l'ENASTIC, je me spécialise dans la création d'applications web et mobiles
+            modernes, performantes et centrées sur l'utilisateur.
+          </p>
+          <div class="home-btns">
+            <a href="#portfolio" class="btn">Voir mes projets</a>
+            <a href="Cv.pdf" class="btn secondary" download
+              style="background: transparent; color: var(--text) !important; border: 1px solid var(--border); box-shadow: none; margin-left: 1rem;">
+              Mon CV
+            </a>
           </div>
+        </div>
+        <div class="profile">
+          <img src="Abakar.jpeg" alt="Abakar Brahim Abakar" />
         </div>
       </div>
     </section>
-    <section class="about" id="about">
+
+    <!-- About Section -->
+    <section class="about reveal" id="about">
       <div class="heading">
-        <h2>À propos</h2>
-        <span>Introduction</span>
+        <span>Curriculum</span>
+        <h2>À propos de moi</h2>
       </div>
-      <!-- About Content -->
+
       <div class="about-container">
+        <div class="about-img">
+          <img src="photo2.png" alt="Espace de travail" />
+        </div>
         <div class="about-text">
           <p>
-            Je suis un étudiant en deuxième année de développement
-            d'applications web et mobiles à l'École nationale supérieure des
-            technologies de l'information et de la communication (ENASTIC).
-            <br />
-            Né le 1er janvier 2004 à DIBININTCHI, je suis passionné par la
-            technologie et le design.
+            Passionné par l'alliance entre la technologie et le design, je me spécialise dans le développement
+            d'écosystèmes web modernes. Mon parcours à l'ENASTIC m'a permis de forger une expertise solide avec des
+            outils comme <strong>ReactJS</strong>, tout en gardant une curiosité constante pour l'innovation numérique.
           </p>
 
-          <div class="information">
-            <!-- Box 1 -->
-            <div class="info-box">
-              <i class="bx bxs-user"></i>
+          <div class="info-cards">
+            <div class="info-card">
+              <i class="bx bxs-user-pin"></i>
+              <h4>Profil</h4>
               <span>Abakar Brahim Abakar</span>
             </div>
-            <!-- Box 2 -->
-            <div class="info-box">
-              <i class="bx bxs-phone"></i>
-              <span>(+235) 92253131 & & 66688968</span>
+            <div class="info-card">
+              <i class="bx bxs-graduation"></i>
+              <h4>Formation</h4>
+              <span>DAWM - ENASTIC</span>
             </div>
-            <!-- Box 3 -->
-            <div class="info-box">
-              <i class="bx bxs-envelope"></i>
-              <span>abakarbrahim702@gmail.com</span>
+            <div class="info-card">
+              <i class="bx bxs-map"></i>
+              <h4>Localisation</h4>
+              <span>N'Djamena, Tchad</span>
             </div>
           </div>
-          <a href="Cv.pdf" class="btn" download>Télécharger mon Cv</a>
-        </div>
-        <div class="about-img">
-          <img src="photo2.png" alt="" />
+
+          <a href="mailto:abakarbrahim702@gmail.com" class="btn">
+            Me contacter <i class='bx bx-send'></i>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- Section: Mes Projets -->
-    <section id="portfolio" class="portfolio">
+    <!-- Projects Section -->
+    <section id="portfolio" class="portfolio reveal">
       <div class="heading">
-        <h2>Mes Projets</h2>
-        <span>Quelques réalisations récentes</span>
+        <span>Portfolio</span>
+        <h2>Réalisations Récentes</h2>
       </div>
-      <div class="portfolio-content">
+
+      <div class="portfolio-grid">
         <!-- Project 1 -->
-        <div class="portfolio-box">
-          <img src="Images/project_man.png" alt="Gestion de Projets">
-          <div class="portfolio-layer">
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <img src="Images/project_man.png" alt="Gestion de Projets">
+          </div>
+          <div class="portfolio-content">
             <h4>Gestion de Projets</h4>
-            <p>Application complète de gestion de tâches et de suivi d'avancement.</p>
-            <a href="https://github.com/Abakar702/gestion_projets" target="_blank"><i
-                class='bx bx-link-external'></i></a>
+            <p>Application complète de gestion de tâches avec suivi du temps et collaboration en équipe.</p>
+            <a href="https://github.com/Abakar702/gestion_projets" target="_blank" class="portfolio-link">
+              Voir sur GitHub <i class='bx bx-right-arrow-alt'></i>
+            </a>
           </div>
         </div>
+
         <!-- Project 2 -->
-        <div class="portfolio-box">
-          <img src="Images/project_shop.png" alt="Site E-commerce">
-          <div class="portfolio-layer">
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <img src="Images/project_shop.png" alt="Site E-commerce">
+          </div>
+          <div class="portfolio-content">
             <h4>Site E-commerce</h4>
-            <p>Plateforme de vente en ligne avec catalogue et panier d'achat.</p>
-            <a href="https://github.com/Abakar702/Site_ecommerce" target="_blank"><i
-                class='bx bx-link-external'></i></a>
+            <p>Plateforme de vente moderne avec catalogue dynamique et gestion de panier d'achat.</p>
+            <a href="https://github.com/Abakar702/Site_ecommerce" target="_blank" class="portfolio-link">
+              Voir sur GitHub <i class='bx bx-right-arrow-alt'></i>
+            </a>
           </div>
         </div>
+
         <!-- Project 3 -->
-        <div class="portfolio-box">
-          <img src="Images/project_todo.png" alt="To-Do List">
-          <div class="portfolio-layer">
-            <h4>My To-Do List</h4>
-            <p>Outil simple et élégant pour organiser vos tâches quotidiennes.</p>
-            <a href="https://github.com/Abakar702/MyTodoList" target="_blank"><i class='bx bx-link-external'></i></a>
+        <div class="portfolio-card">
+          <div class="portfolio-img">
+            <img src="Images/project_todo.png" alt="To-Do List">
+          </div>
+          <div class="portfolio-content">
+            <h4>Advanced To-Do</h4>
+            <p>Une solution élégante pour l'organisation quotidienne des tâches professionnelles.</p>
+            <a href="https://github.com/Abakar702/MyTodoList" target="_blank" class="portfolio-link">
+              Voir sur GitHub <i class='bx bx-right-arrow-alt'></i>
+            </a>
           </div>
         </div>
       </div>
     </section>
-    <!-- Section 3 : Carrousel d'images -->
-    <section id="Slide">
-      <h2>Mes Images</h2>
+
+    <!-- Skills Section -->
+    <section class="skills reveal" id="skills">
+      <div class="heading">
+        <span>Compétences</span>
+        <h2>Expertise Technique</h2>
+      </div>
+
+      <div class="skills-container">
+        <div class="skills-text">
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>Frontend (HTML/CSS)</span>
+              <span>90%</span>
+            </div>
+            <div class="skill-progress">
+              <div class="skill-fill" data-width="90%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>ReactJS / Redux</span>
+              <span>55%</span>
+            </div>
+            <div class="skill-progress">
+              <div class="skill-fill" data-width="55%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>JavaScript (ES6+)</span>
+              <span>65%</span>
+            </div>
+            <div class="skill-progress">
+              <div class="skill-fill" data-width="65%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>PHP / Laravel</span>
+              <span>40%</span>
+            </div>
+            <div class="skill-progress">
+              <div class="skill-fill" data-width="40%"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>Python / Django</span>
+              <span>30%</span>
+            </div>
+            <div class="skill-progress">
+              <div class="skill-fill" data-width="30%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-desc">
+          <h3>Outils & Environnements</h3>
+          <p>
+            Maîtrise de Git/GitHub pour le versioning, VS Code comme éditeur principal, et les outils de design comme
+            Figma pour le prototypage.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="Slide" class="reveal">
+      <div class="heading">
+        <span>Vision</span>
+        <h2>Galerie Photos</h2>
+      </div>
+
       <div class="slideshow">
         <div class="slideshow-container">
-          <button class="nav-icon prev">&#10094;</button>
-          <div class="image-container">
-            <img src="Images/pro_code.jpg" alt="Développement Web" data-title="Développement Web"
-              data-description="La passion du code et la création d'interfaces modernes et performantes. Toujours à la recherche des meilleures solutions techniques."
-              class="active" />
-            <button class="details-button">Voir les détails</button>
-          </div>
-          <div class="image-container">
-            <img src="Images/pro_workspace.jpg" alt="Espace de Travail" data-title="Espace de Travail"
-              data-description="Un environnement optimisé pour la productivité et la créativité. L'organisation est la clé de la réussite d'un projet." />
-            <button class="details-button">Voir les détails</button>
-          </div>
-          <div class="image-container">
-            <img src="Images/pro_meeting.jpg" alt="Collaboration" data-title="Collaboration"
-              data-description="Le travail d'équipe et l'échange d'idées sont essentiels pour mener à bien des projets ambitieux et innovants." />
-            <button class="details-button">Voir les détails</button>
-          </div>
+          <img src="Images/pro_code.jpg" alt="Code" class="active" data-title="Code & Développement"
+            data-description="L'art de transformer des idées en lignes de code fonctionnelles." />
+          <img src="Images/pro_workspace.jpg" alt="Workspace" data-title="Workspace"
+            data-description="Un environnement propice à l'innovation et à la concentration." />
+          <img src="Images/pro_meeting.jpg" alt="Meeting" data-title="Collaboration"
+            data-description="L'échange d'idées est le moteur de chaque projet réussi." />
 
-          <button class="nav-icon next">&#10095;</button>
+          <div class="slide-nav">
+            <button class="slide-btn prev"><i class='bx bx-chevron-left'></i></button>
+            <button class="slide-btn next"><i class='bx bx-chevron-right'></i></button>
+          </div>
+          <button class="details-button btn"
+            style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); opacity: 0; transition: 0.3s; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);">
+            Détails
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- Section 4 : Vidéo -->
-    <section id="video">
-      <div class="video-section">
+    <!-- Video Section -->
+    <section id="video" class="reveal">
+      <div class="heading">
+        <span>Multimédia</span>
         <h2>Mes Vidéos</h2>
-        <video controls width="100%" height="500" poster="Images/pro_code.jpg">
+      </div>
+
+      <div class="video-wrapper">
+        <video controls width="100%" poster="Images/pro_code.jpg">
           <source src="maVideo/maVideo.mp4" type="video/mp4">
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
-        <div class="video-links">
-          <a href="https://www.youtube.com/watch?v=e-V9O2wGjDc" target="_blank">
-            <i class='bx bxl-youtube'></i> Voir sur YouTube
-          </a>
-          <a href="maVideo/" target="_blank">
-            <i class='bx bx-folder'></i> Répertoire
-          </a>
-          <a href="maVideo/maVideo.mp4" download>
-            <i class='bx bx-download'></i> Télécharger
-          </a>
+      </div>
 
-        </div>
+      <div class="video-links">
+        <a href="https://www.youtube.com/watch?v=e-V9O2wGjDc" target="_blank">
+          <i class='bx bxl-youtube'></i> YouTube
+        </a>
+        <a href="maVideo/maVideo.mp4" download>
+          <i class='bx bx-download'></i> Télécharger
+        </a>
       </div>
     </section>
 
-    <!-- Section 5 : Parcours professionnel -->
-    <section id="parcours">
-      <div class="parcours">
-        <h2>Formation professionnelle </h2>
-        <ul>
-          <h3>Formation universitaire</h3>
-          <li>
-            <strong>2023-2024 :</strong> 1ère année de développement des
-            applications web et mobile(DAWM) à l'Ecole nationale supérieure
-            des technologies de l’informatique et de la communication
-            (ENASTIC)
-          </li>
-          <li>
-            <strong>2024-2025 :</strong> 2ème année développement des
-            applications web et mobile (DAWM) à l'Ecole nationale supérieure
-            des technologies de l’informatique et de la communication
-            (ENASTIC)
-          </li>
-          <li>
-            <strong>2025-2026 :</strong> 3ème année développement des
-            applications web et mobile (DAWM) à l'Ecole nationale supérieure
-            des technologies de l’informatique et de la communication
-            (ENASTIC)
-          </li>
-        </ul>
-        </ul>
-        <ul>
-          <h3>Certifications & Formations</h3>
-          <li>
-            <strong>OpenClassrooms :</strong> Parcours complet suivi en JavaScript, Algorithmique, HTML/CSS, API (Sans
-            certificat).
-          </li>
-          <li>
-            <strong>En cours :</strong> React.js & Node.js (OpenClassrooms).
-          </li>
-          <li>
-            <strong>2025 :</strong> Programme d'État : Formation certifiante en Intelligence Artificielle (IA) pour les
-            étudiants.
-          </li>
-          <li>
-            <strong>Autodidacte :</strong> Veille technologique et apprentissage continu.
-          </li>
-        </ul>
-        <ul>
-          <h3>Expérience Professionnelle</h3>
-          <li>
-            <strong>2025 (Stage) :</strong> Développeur chez <strong>Mahrasoft Innovation</strong> (Tchad).
-            <br>Participation au développement de solutions numériques innovantes.
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Section 6 : Compétences -->
-    <section class="skills" id="skills">
+    <!-- Timeline Section -->
+    <section id="parcours" class="reveal">
       <div class="heading">
-        <h2>Mes Compétences Techniques</h2>
-        <span>Voici mes compétences clés</span>
+        <span>Éducation</span>
+        <h2>Mon Parcours</h2>
       </div>
-      <div class="skills-container">
-        <div class="bars">
-          <div class="bars-box">
-            <h3>HTML</h3>
-            <span class="counter" data-target="94">0%</span>
-            <div class="light-bar">
-              <div class="percent-bar html-bar" style="--width:94%"></div>
-            </div>
-          </div>
-          <div class="bars-box">
-            <h3>CSS</h3>
-            <span class="counter" data-target="80">0%</span>
-            <div class="light-bar">
-              <div class="percent-bar css-bar" style="--width:80%"></div>
-            </div>
-          </div>
-          <div class="bars-box">
-            <h3>JavaScript</h3>
-            <span class="counter" data-target="40">0%</span>
-            <div class="light-bar">
-              <div class="percent-bar js-bar" style="--width:40%"></div>
-            </div>
-          </div>
-          <div class="bars-box">
-            <h3>PHP</h3>
-            <span class="counter" data-target="20">0%</span>
-            <div class="light-bar">
-              <div class="percent-bar php-bar" style="--width:20%"></div>
-            </div>
-          </div>
-          <div class="bars-box">
-            <h3>Python</h3>
-            <span class="counter" data-target="20">0%</span>
-            <div class="light-bar">
-              <div class="percent-bar python-bar" style="--width:20%"></div>
-            </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2024 - 2025</div>
+          <div class="timeline-content">
+            <h4>2ème Année DAWM</h4>
+            <p>ENASTIC - Spécialisation en développement mobile et architectures web avancées.</p>
           </div>
         </div>
-        <div class="skills-img">
-          <img src="Images/pro_code.jpg" alt="Compétences" />
+
+        <div class="timeline-item">
+          <div class="timeline-date">2023 - 2024</div>
+          <div class="timeline-content">
+            <h4>1ère Année DAWM</h4>
+            <p>ENASTIC - Apprentissage des bases de l'algorithmique et du développement web.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">2025 (Stage)</div>
+          <div class="timeline-content">
+            <h4>Mahrasoft Innovation</h4>
+            <p>Développeur Stagiaire - Participation à des projets réels en environnement professionnel.</p>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Section 7 : Footer -->
+  <!-- Footer -->
   <footer>
-    <div class="footer">
-      <h2>Me Suivre</h2>
+    <div class="footer-content">
+      <img src="logo.jpeg" alt="Logo" style="width: 60px; border-radius: 15px; margin-bottom: 1.5rem;">
+      <h3>Abakar Brahim Abakar</h3>
+      <p>Bâtissons ensemble le futur numérique.</p>
+
       <div class="footer-social">
-        <a href="https://www.facebook.com/profile.php?id=100070317761293" target="_blank">
-          <i class="bx bxl-facebook"></i>
-        </a>
-        <a href="https://www.telegram.com" target="_blank">
-          <i class="bx bxl-telegram"></i>
-        </a>
-        <a href="https://www.youtube.com" target="_blank">
-          <i class="bx bxl-youtube"></i>
-        </a>
-        <a href="https://www.tiktok.com/@developpeur2024" target="_blank">
-          <i class="bx bxl-tiktok"></i>
-        </a>
-        <a href="https://github.com/Abakar702/" target="_blank">
-          <i class="bx bxl-github"></i>
-        </a>
+        <a href="https://github.com/Abakar702/" target="_blank"><i class="bx bxl-github"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100070317761293" target="_blank"><i
+            class="bx bxl-facebook"></i></a>
+        <a href="https://www.tiktok.com/@developpeur2024" target="_blank"><i class="bx bxl-tiktok"></i></a>
+        <a href="mailto:abakarbrahim702@gmail.com"><i class="bx bxs-envelope"></i></a>
       </div>
-    </div>
-    <div class="copyright">
-      <p>
-        Créé par <a href="#home">Abakar Brahim Abakar</a> | Tous droits
-        réservés.
-      </p>
+
+      <div class="copyright">
+        <p>&copy; 2024 Abakar Brahim Abakar. Conçu avec passion.</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Script JavaScript -->
   <script src="slide.js"></script>
 </body>
 

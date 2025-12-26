@@ -4,79 +4,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Détails du Projet | Abakar Brahim Abakar</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
   <link rel="stylesheet" type="text/css" href="slide.css" />
-  <title>Détails de l'image</title>
   <style>
     body {
-      text-align: center;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding: 40px 10%;
     }
 
-    .details-container {
-      padding: 20px;
-      border-radius: 8px;
-      margin: 50px auto;
+    .details-card {
+      background: var(--card-bg);
+      padding: 3rem;
+      border-radius: 32px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      max-width: 1000px;
+      width: 100%;
+      text-align: center;
+      transition: var(--transition);
+      animation: slideUp 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .details-img-wrapper {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 2.5rem;
+      aspect-ratio: 16/9;
+    }
+
+    .details-img-wrapper img {
       width: 100%;
       height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      object-fit: cover;
     }
 
-    .details-container img {
-      width: 100%;
-      max-width: 400px;
-      height: auto;
-      border-radius: 8px;
+    .details-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text);
     }
 
-    .details-container h2 {
-      margin-top: 20px;
-    }
-
-    .details-container p {
-      font-size: 16px;
-      color: #555;
-    }
-
-    p {
-      text-align: justify;
-    }
-
-    .image-containers {
-      background: var(--card-bg);
-      box-shadow: var(--shadow-lg);
-      padding: 10px;
-      width: max-content;
-      border-radius: 12px;
-      margin-bottom: 2rem;
-    }
-
-    .details-container p {
-      color: var(--secondary-color);
+    .details-content p {
+      color: var(--text-soft);
+      font-size: 1.2rem;
       line-height: 1.8;
+      margin-bottom: 2.5rem;
       max-width: 800px;
+      margin-inline: auto;
     }
 
-    /* Remove old button styles as we use .btn now */
-    .back-button {
-      display: none;
+    .btn-group {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    /* Small hack for dark mode if body active is not enough */
+    body.active .details-card {
+      background: var(--card-bg);
     }
   </style>
 </head>
 
 <body>
-  <div class="details-container">
-    <div class="image-containers">
-      <img id="detail-image" src="" alt="Image du projet" />
+  <div class="details-card">
+    <div class="details-img-wrapper">
+      <img id="detail-image" src="" alt="Détails du projet" />
     </div>
-    <div class="texts">
+    <div class="details-content">
       <h2 id="detail-title"></h2>
       <p id="detail-description"></p>
-      <a href="index.html" class="btn">Retour</a>
+
+      <div class="btn-group">
+        <a href="index.html" class="btn">
+          <i class='bx bx-left-arrow-alt'></i> Retour
+        </a>
+      </div>
     </div>
   </div>
 

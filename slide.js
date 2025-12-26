@@ -1,143 +1,144 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let currentIndex = 0;
-  const images = document.querySelectorAll(".slideshow img");
-  const prevButton = document.querySelector(".slideshow .prev");
-  const nextButton = document.querySelector(".slideshow .next");
-  const detailButtons = document.querySelectorAll(".slideshow .details-button");
+  // --- Navigation & Scroll Effects ---
+  const header = document.querySelector("header");
+  const menuIcon = document.querySelector("#menu-icon");
+  const navbar = document.querySelector(".navbar");
+  const navLinks = document.querySelectorAll(".navbar a");
 
-  // Fonction pour afficher l'image actuelle
-  function showImage(index) {
-    images.forEach((img, i) => {
-      const container = img.parentElement;
-      img.classList.toggle("active", i === index);
-      container.classList.toggle("active", i === index);
+  // Mobile Menu Toggle
+  menuIcon.onclick = () => {
+    navbar.classList.toggle("active");
+    menuIcon.classList.toggle("bx-x");
+  };
+
+  // Sticky Header & Active Link on Scroll
+  window.addEventListener("scroll", () => {
+    // Header shadow and height
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+
+    // Active link highlighting
+    let current = "";
+    const sections = document.querySelectorAll("section");
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      if (pageYOffset >= sectionTop - 100) {
+        current = section.getAttribute("id");
+      }
     });
-  }
 
-  // Fonction pour passer à l'image suivante
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-  }
-
-  // Fonction pour revenir à l'image précédente
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
-  }
-
-  // Fonction pour rediriger vers la page de détails
-  function redirectToDetails(title, src, description) {
-    const queryParams = new URLSearchParams({
-      title,
-      src,
-      description,
-    }).toString();
-    window.location.href = `details.html?${queryParams}`;
-  }
-
-  // Ajouter des écouteurs d'événements pour les boutons précédent et suivant
-  prevButton.addEventListener("click", prevImage);
-  nextButton.addEventListener("click", nextImage);
-
-  // Ajouter des écouteurs d'événements pour les boutons de détails
-  detailButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      const img = images[index];
-      const title = img.getAttribute("data-title");
-      const src = img.getAttribute("src");
-      const description = img.getAttribute("data-description");
-      redirectToDetails(title, src, description);
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
     });
+
+    // Close mobile menu on scroll
+    navbar.classList.remove("active");
+    menuIcon.classList.remove("bx-x");
   });
 
-  // Afficher la première image au chargement de la page
-  showImage(currentIndex);
-
-  // Sticky Navbar
-  let header = document.querySelector("header");
-  let menu = document.querySelector("#menu-icon");
-  let navbar = document.querySelector(".navbar");
-
-  menu.onclick = () => {
-    navbar.classList.toggle("active");
-  };
-  window.onscroll = () => {
-    navbar.classList.remove("active");
-  };
-
-  // Dark Mode
-  let darkmode = document.querySelector("#modesombre");
-  darkmode.style.cursor = "pointer";
-
-  // Vérifier l'état du thème au chargement de la page
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("active");
-    darkmode.classList.replace("bx-moon", "bx-sun");
-
-  } else {
-    document.body.classList.remove("active");
-    darkmode.classList.replace("bx-sun", "bx-moon");
-
-  }
-
-  // Gestion du changement de thème
-  darkmode.onclick = () => {
-    if (darkmode.classList.contains("bx-moon")) {
-      darkmode.classList.replace("bx-moon", "bx-sun");
-
-      document.body.classList.add("active");
-      localStorage.setItem("theme", "dark"); // Enregistrer le thème sombre
-    } else {
-      darkmode.classList.replace("bx-sun", "bx-moon");
-
-      document.body.classList.remove("active");
-      localStorage.setItem("theme", "light"); // Enregistrer le thème clair
-    }
-  };
-
-
-  // Skills Animation
-  const skillsSection = document.querySelector(".skills");
-  const progressBars = document.querySelectorAll(".percent-bar");
-  const counters = document.querySelectorAll(".counter");
-
-  function startSkillAnimation() {
-    progressBars.forEach((bar) => {
-      bar.classList.add("animate");
-    });
-
-    counters.forEach((counter) => {
-      const target = +counter.getAttribute("data-target");
-      const duration = 2000; // 2 seconds
-      const increment = target / (duration / 16); // 60fps
-
-      let current = 0;
-      const updateCounter = () => {
-        current += increment;
-        if (current < target) {
-          counter.innerText = Math.ceil(current) + "%";
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.innerText = target + "%";
-        }
-      };
-      updateCounter();
-    });
-  }
-
-  const observer = new IntersectionObserver(
+  // --- Scroll Reveal Animation ---
+  const revealElements = document.querySelectorAll(".reveal");
+  const revealObserver = new IntersectionObserver(
     (entries) => {
-      if (entries[0].isIntersecting) {
-        startSkillAnimation();
-        observer.disconnect(); // Run only once
-      }
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
     },
     { threshold: 0.1 }
   );
 
-  if (skillsSection) {
-    observer.observe(skillsSection);
+  revealElements.forEach((el) => revealObserver.observe(el));
+
+  // --- Dark Mode ---
+  const darkmodeBtn = document.querySelector("#modesombre");
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("active");
+    darkmodeBtn.classList.replace("bx-moon", "bx-sun");
   }
+
+  darkmodeBtn.onclick = () => {
+    document.body.classList.toggle("active");
+    if (document.body.classList.contains("active")) {
+      darkmodeBtn.classList.replace("bx-moon", "bx-sun");
+      localStorage.setItem("theme", "dark");
+    } else {
+      darkmodeBtn.classList.replace("bx-sun", "bx-moon");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
+  // --- Skills Animation ---
+  const skillSection = document.querySelector("#skills");
+  const skillFills = document.querySelectorAll(".skill-fill");
+
+  const skillObserver = new IntersectionObserver(
+    (entries) => {
+      if (entries[0].isIntersecting) {
+        skillFills.forEach((fill) => {
+          fill.style.width = fill.getAttribute("data-width");
+        });
+        skillObserver.disconnect();
+      }
+    },
+    { threshold: 0.5 }
+  );
+
+  if (skillSection) skillObserver.observe(skillSection);
+
+  // --- Gallery Slideshow ---
+  let currentIndex = 0;
+  const slides = document.querySelectorAll(".slideshow-container img");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  const detailButtons = document.querySelectorAll(".details-button");
+
+  function showSlide(index) {
+    slides.forEach((slide) => slide.classList.remove("active"));
+    slides[index].classList.add("active");
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  if (nextBtn) nextBtn.onclick = nextSlide;
+  if (prevBtn) prevBtn.onclick = prevSlide;
+
+  // Auto slide
+  let slideInterval = setInterval(nextSlide, 5000);
+
+  // Stop auto slide on interaction
+  const slideshow = document.querySelector(".slideshow");
+  if (slideshow) {
+    slideshow.onmouseenter = () => clearInterval(slideInterval);
+    slideshow.onmouseleave = () => (slideInterval = setInterval(nextSlide, 5000));
+  }
+
+  // Details Redirect
+  detailButtons.forEach((btn, index) => {
+    btn.onclick = () => {
+      const slide = slides[index];
+      const title = slide.getAttribute("data-title");
+      const src = slide.getAttribute("src");
+      const desc = slide.getAttribute("data-description");
+      const params = new URLSearchParams({ title, src, description: desc }).toString();
+      window.location.href = `details.html?${params}`;
+    };
+  });
 });
