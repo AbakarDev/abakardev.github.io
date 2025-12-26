@@ -779,6 +779,7 @@ footer {
     padding: 10px 20px;
     font-size: 0.85rem;
     background: rgba(15, 23, 42, 0.9);
+    width: auto;
   }
 
   .slideshow-container {
@@ -842,6 +843,10 @@ footer {
     padding: 8px 16px;
     font-size: 0.75rem;
     bottom: 0.8rem;
+    width: auto;
+    min-width: 120px;
+    display: flex;
+    justify-content: center;
   }
 }
 
