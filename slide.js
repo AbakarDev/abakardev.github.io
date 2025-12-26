@@ -131,14 +131,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Details Redirect
-  detailButtons.forEach((btn, index) => {
-    btn.onclick = () => {
-      const slide = slides[index];
+  const detailButton = document.querySelector(".details-button");
+  if (detailButton) {
+    detailButton.onclick = () => {
+      const slide = slides[currentIndex];
       const title = slide.getAttribute("data-title");
       const src = slide.getAttribute("src");
       const desc = slide.getAttribute("data-description");
       const params = new URLSearchParams({ title, src, description: desc }).toString();
       window.location.href = `details.html?${params}`;
     };
-  });
+  }
 });
