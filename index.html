@@ -29,7 +29,7 @@
   <meta property="twitter:image" content="https://abakardev.github.io/Abakar.jpeg" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="logo.jpeg">
+  <link rel="icon" type="image/webp" href="logo.webp">
 
   <!-- Boxicons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
@@ -40,7 +40,7 @@
   <!-- Navigation -->
   <header>
     <a href="#home" class="logo">
-      <img src="logo.jpeg" alt="Logo ABA" />
+      <img src="logo.webp" alt="Logo ABA" width="45" height="45" />
       <span>Abakar Brahim</span>
     </a>
 
@@ -81,7 +81,7 @@
           </div>
         </div>
         <div class="profile">
-          <img src="Abakar.jpeg" alt="Abakar Brahim Abakar" />
+          <img src="Abakar.webp" alt="Abakar Brahim Abakar" width="450" height="450" />
         </div>
       </div>
     </section>
@@ -95,7 +95,7 @@
 
       <div class="about-container">
         <div class="about-img">
-          <img src="photo2.png" alt="Espace de travail" />
+          <img src="photo2.webp" alt="Espace de travail" loading="lazy" width="400" height="400" />
         </div>
         <div class="about-text">
           <p>
@@ -140,9 +140,13 @@
         <!-- Project 1 -->
         <div class="portfolio-card">
           <div class="portfolio-img">
-            <img src="Images/project_man.png" alt="Gestion de Projets">
+            <img src="Images/project_man.png" alt="Gestion de Projets" loading="lazy">
           </div>
           <div class="portfolio-content">
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+            </div>
             <h4>Gestion de Projets</h4>
             <p>Application complète de gestion de tâches avec suivi du temps et collaboration en équipe.</p>
             <a href="https://github.com/Abakar702/gestion_projets" target="_blank" class="portfolio-link">
@@ -154,9 +158,13 @@
         <!-- Project 2 -->
         <div class="portfolio-card">
           <div class="portfolio-img">
-            <img src="Images/project_shop.png" alt="Site E-commerce">
+            <img src="Images/project_shop.png" alt="Site E-commerce" loading="lazy">
           </div>
           <div class="portfolio-content">
+            <div class="project-tags">
+              <span class="tag">PHP</span>
+              <span class="tag">Laravel</span>
+            </div>
             <h4>Site E-commerce</h4>
             <p>Plateforme de vente moderne avec catalogue dynamique et gestion de panier d'achat.</p>
             <a href="https://github.com/Abakar702/Site_ecommerce" target="_blank" class="portfolio-link">
@@ -168,9 +176,13 @@
         <!-- Project 3 -->
         <div class="portfolio-card">
           <div class="portfolio-img">
-            <img src="Images/project_todo.png" alt="To-Do List">
+            <img src="Images/project_todo.png" alt="To-Do List" loading="lazy">
           </div>
           <div class="portfolio-content">
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">LocalStorage</span>
+            </div>
             <h4>Advanced To-Do</h4>
             <p>Une solution élégante pour l'organisation quotidienne des tâches professionnelles.</p>
             <a href="https://github.com/Abakar702/MyTodoList" target="_blank" class="portfolio-link">
@@ -193,7 +205,7 @@
           <div class="skill-bar">
             <div class="skill-info">
               <span>Frontend (HTML/CSS)</span>
-              <span>85%</span>
+              <span class="skill-percent" data-target="85">0%</span>
             </div>
             <div class="skill-progress">
               <div class="skill-fill" data-width="85%"></div>
@@ -203,17 +215,17 @@
           <div class="skill-bar">
             <div class="skill-info">
               <span>ReactJS </span>
-              <span>45%</span>
+              <span class="skill-percent" data-target="45">0%</span>
             </div>
             <div class="skill-progress">
-              <div class="skill-fill" data-width="55%"></div>
+              <div class="skill-fill" data-width="45%"></div>
             </div>
           </div>
 
           <div class="skill-bar">
             <div class="skill-info">
               <span>JavaScript (ES6+)</span>
-              <span>65%</span>
+              <span class="skill-percent" data-target="65">0%</span>
             </div>
             <div class="skill-progress">
               <div class="skill-fill" data-width="65%"></div>
@@ -223,7 +235,7 @@
           <div class="skill-bar">
             <div class="skill-info">
               <span>PHP </span>
-              <span>30%</span>
+              <span class="skill-percent" data-target="30">0%</span>
             </div>
             <div class="skill-progress">
               <div class="skill-fill" data-width="30%"></div>
@@ -233,7 +245,7 @@
           <div class="skill-bar">
             <div class="skill-info">
               <span>Python </span>
-              <span>30%</span>
+              <span class="skill-percent" data-target="30">0%</span>
             </div>
             <div class="skill-progress">
               <div class="skill-fill" data-width="30%"></div>
@@ -260,12 +272,12 @@
 
       <div class="slideshow">
         <div class="slideshow-container">
-          <img src="Images/pro_code.jpg" alt="Code" class="active" data-title="Code & Développement"
-            data-description="L'art de transformer des idées en lignes de code fonctionnelles." />
-          <img src="Images/pro_workspace.jpg" alt="Workspace" data-title="Workspace"
-            data-description="Un environnement propice à l'innovation et à la concentration." />
-          <img src="Images/pro_meeting.jpg" alt="Meeting" data-title="Collaboration"
-            data-description="L'échange d'idées est le moteur de chaque projet réussi." />
+          <img src="Images/pro_code.webp" alt="Code" class="active" data-title="Code & Développement"
+            data-description="L'art de transformer des idées en lignes de code fonctionnelles." loading="lazy" />
+          <img src="Images/pro_workspace.webp" alt="Workspace" data-title="Workspace"
+            data-description="Un environnement propice à l'innovation et à la concentration." loading="lazy" />
+          <img src="Images/pro_meeting.webp" alt="Meeting" data-title="Collaboration"
+            data-description="L'échange d'idées est le moteur de chaque projet réussi." loading="lazy" />
 
           <div class="slide-nav">
             <button class="slide-btn prev"><i class='bx bx-chevron-left'></i></button>
@@ -286,7 +298,7 @@
       </div>
 
       <div class="video-wrapper">
-        <video controls width="100%" poster="Images/pro_code.jpg">
+        <video controls width="100%" poster="Images/pro_code.webp" preload="none">
           <source src="maVideo/myvideo.mp4" type="video/mp4">
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
@@ -348,7 +360,7 @@
   <!-- Footer -->
   <footer>
     <div class="footer-content">
-      <img src="logo.jpeg" alt="Logo" style="width: 60px; border-radius: 15px; margin-bottom: 1.5rem;">
+      <img src="logo.webp" alt="Logo" style="width: 60px; border-radius: 15px; margin-bottom: 1.5rem;" loading="lazy">
       <h3>Abakar Brahim Abakar</h3>
       <p>Bâtissons ensemble le futur numérique.</p>
 

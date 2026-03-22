@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- Skills Animation ---
   const skillSection = document.querySelector("#skills");
   const skillFills = document.querySelectorAll(".skill-fill");
+  const skillPercents = document.querySelectorAll(".skill-percent");
 
   const skillObserver = new IntersectionObserver(
     (entries) => {
@@ -87,6 +88,24 @@ document.addEventListener("DOMContentLoaded", function () {
         skillFills.forEach((fill) => {
           fill.style.width = fill.getAttribute("data-width");
         });
+        
+        skillPercents.forEach((percent) => {
+          const target = parseInt(percent.getAttribute("data-target"));
+          let current = 0;
+          const increment = target / 60; // adjust animation speed
+          
+          const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+              percent.innerText = Math.ceil(current) + "%";
+              requestAnimationFrame(updateCounter);
+            } else {
+              percent.innerText = target + "%";
+            }
+          };
+          updateCounter();
+        });
+        
         skillObserver.disconnect();
       }
     },
@@ -94,6 +113,42 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   if (skillSection) skillObserver.observe(skillSection);
+
+  // --- Magnetic Buttons Effect ---
+  const magnets = document.querySelectorAll('.btn');
+  magnets.forEach(magnet => {
+    magnet.addEventListener('mousemove', function(e) {
+      const position = magnet.getBoundingClientRect();
+      const x = e.clientX - position.left - position.width / 2;
+      const y = e.clientY - position.top - position.height / 2;
+      
+      this.style.transition = 'none';
+      this.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+    });
+    
+    magnet.addEventListener('mouseleave', function() {
+      this.style.transition = 'var(--transition)';
+      this.style.transform = 'translate(0px, 0px)';
+    });
+  });
+
+  // --- Custom Cursor ---
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor');
+  document.body.appendChild(cursor);
+
+  document.addEventListener('mousemove', e => {
+    // using requestAnimationFrame for smoother custom cursor can be nice, 
+    // but updating inline styles directly inside mousemove works well for position absolute
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  const hoverElements = document.querySelectorAll('a, button, .portfolio-card, .info-card, #modesombre, #menu-icon');
+  hoverElements.forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+  });
 
   // --- Gallery Slideshow ---
   let currentIndex = 0;
