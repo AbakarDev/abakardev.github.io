@@ -1088,8 +1088,29 @@ footer {
     gap: 3rem;
   }
 
+  .home-text p,
+  .home-text h1,
+  .home-text h2 {
+    text-align: center;
+  }
+
   .home-text p {
     margin-inline: auto;
+  }
+
+  /* Hero stats centered on tablet */
+  .hero-stats {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+  }
+
+  .home-btns {
+    justify-content: center;
+  }
+
+  .badge {
+    display: inline-flex;
   }
 
   .about-img {
@@ -1110,6 +1131,13 @@ footer {
 
   .profile {
     order: -1;
+    max-width: 360px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .profile-ring {
+    display: none; /* hide ring on tablet to avoid overflow */
   }
 
   h1 {
@@ -1134,7 +1162,6 @@ footer {
 
   .logo span {
     display: none;
-    /* Hide name on small mobile if needed, but here let's keep it tidy */
   }
 
   #menu-icon {
@@ -1150,7 +1177,6 @@ footer {
     position: fixed;
     top: 70px;
     left: -110%;
-    /* More off-screen */
     width: 280px;
     height: calc(100vh - 70px);
     background: var(--bg);
@@ -1190,6 +1216,19 @@ footer {
     border-left: 3px solid var(--primary);
   }
 
+  /* Stat cards stacked cleanly on mobile */
+  .hero-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .stat {
+    width: 100%;
+    max-width: 320px;
+    justify-content: flex-start;
+  }
+
   /* Responsive Slideshow Details Button */
   .details-button {
     opacity: 1;
@@ -1204,6 +1243,10 @@ footer {
   .slideshow-container {
     border-radius: 20px;
   }
+
+  .contact-info { grid-template-columns: 1fr 1fr; }
+  .tools-list { grid-template-columns: 1fr; }
+  .contact-form { padding: 1.5rem; }
 }
 
 @media (max-width: 480px) {
@@ -1212,7 +1255,7 @@ footer {
   }
 
   section {
-    padding: 50px 5%;
+    padding: 60px 5%;
   }
 
   .logo span {
@@ -1220,20 +1263,59 @@ footer {
   }
 
   .home-text h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .home-text h2 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+  }
+
+  .home-text p {
+    font-size: 1rem;
+  }
+
+  /* Badge centered */
+  .badge {
+    font-size: 0.78rem;
+    padding: 6px 14px;
+  }
+
+  /* Profile image smaller on phone */
+  .profile {
+    max-width: 260px;
+    width: 75%;
   }
 
   .profile img {
-    max-width: 300px;
-    border-width: 6px;
+    max-width: 260px;
+    border-width: 5px;
+  }
+
+  /* Stat cards full width on phone */
+  .hero-stats {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .stat {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.85rem 1.2rem;
+  }
+
+  .stat-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .stat strong {
+    font-size: 1.25rem;
   }
 
   .btn {
-    padding: 14px 24px;
+    padding: 13px 20px;
     font-size: 0.9rem;
     width: 100%;
     justify-content: center;
@@ -1241,13 +1323,8 @@ footer {
 
   .home-btns {
     width: 100%;
-    display: flex;
     flex-direction: column;
-    gap: 1rem;
-  }
-
-  .home-btns .btn:last-child {
-    margin-left: 0 !important;
+    gap: 0.8rem;
   }
 
   .info-cards {
@@ -1256,6 +1333,26 @@ footer {
 
   .timeline-item {
     padding-left: 2rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-container {
+    gap: 3rem;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
+    gap: 1rem;
+  }
+
+  .stat strong {
+    font-size: 1.4rem;
   }
 
   .details-button {
