@@ -36,6 +36,156 @@ body.active {
   --border: rgba(139, 92, 246, 0.15);
   --card-bg: rgba(15, 15, 35, 0.7);
   --primary-soft: rgba(99, 102, 241, 0.12);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Dark mode: Hero gradient bg ── */
+body.active #home {
+  background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+              radial-gradient(circle at 10% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 40%);
+}
+
+/* ── Dark mode: Stat cards ── */
+body.active .stat {
+  background: rgba(15, 15, 35, 0.8);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+body.active .stat:hover {
+  border-color: var(--primary);
+  box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
+}
+
+body.active .stat-icon {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+/* ── Dark mode: Badge ── */
+body.active .badge {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+/* ── Dark mode: Hero title gradient (keep visible on dark) ── */
+body.active .home-text h1 {
+  background: linear-gradient(to bottom right, #f0f0ff 40%, #8892b0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Dark mode: Skills bar track ── */
+body.active .skill-progress {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+/* ── Dark mode: Skills desc card ── */
+body.active .skills-desc {
+  background: rgba(15, 15, 35, 0.8);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+/* ── Dark mode: Tools list items ── */
+body.active .tools-list li {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(139, 92, 246, 0.15);
+  color: var(--text-soft);
+}
+
+body.active .tools-list li:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ── Dark mode: Timeline ── */
+body.active .timeline-item {
+  border-left-color: rgba(139, 92, 246, 0.2);
+}
+
+body.active .timeline-content {
+  background: rgba(15, 15, 35, 0.8);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+body.active .timeline-item::before {
+  border-color: var(--bg);
+}
+
+/* ── Dark mode: Video wrapper ── */
+body.active .video-wrapper {
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+body.active .video-links a {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(139, 92, 246, 0.15);
+  color: var(--text-soft);
+}
+
+/* ── Dark mode: Contact form ── */
+body.active .contact-form {
+  background: rgba(15, 15, 35, 0.8);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+
+body.active .form-group input,
+body.active .form-group textarea {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(139, 92, 246, 0.2);
+  color: var(--text);
+}
+
+body.active .form-group input::placeholder,
+body.active .form-group textarea::placeholder {
+  color: var(--text-soft);
+  opacity: 0.6;
+}
+
+body.active .form-group input:focus,
+body.active .form-group textarea:focus {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.05);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* ── Dark mode: Gallery Slide section ── */
+body.active #Slide {
+  background: rgba(6, 6, 15, 0.9);
+}
+
+/* ── Dark mode: Secondary btn ── */
+body.active .btn.secondary {
+  border-color: rgba(139, 92, 246, 0.3) !important;
+  color: var(--text) !important;
+}
+
+body.active .btn.secondary:hover {
+  background: rgba(99, 102, 241, 0.1) !important;
+  border-color: var(--primary) !important;
+}
+
+/* ── Dark mode: Header buttons ── */
+body.active #menu-icon {
+  color: var(--text);
+}
+
+body.active #menu-icon:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+body.active header {
+  background: rgba(6, 6, 15, 0.85);
+  border-bottom-color: rgba(139, 92, 246, 0.15);
+}
+
+/* ── Dark mode: mobile navbar panel ── */
+body.active .navbar {
+  background: rgba(6, 6, 15, 0.98);
+  border-right-color: rgba(139, 92, 246, 0.15);
 }
 
 /* Noise Texture Overlay */
@@ -249,6 +399,17 @@ header.scrolled {
   cursor: pointer;
   display: none;
   color: var(--text);
+  background: transparent;
+  border: none;
+  padding: 4px;
+  border-radius: 8px;
+  transition: var(--transition);
+  line-height: 1;
+}
+
+#menu-icon:hover {
+  background: var(--bg-soft);
+  color: var(--primary);
 }
 
 /* Hero */
@@ -261,6 +422,7 @@ header.scrolled {
   overflow: hidden;
   background: radial-gradient(circle at 80% 20%, var(--primary-soft) 0%, transparent 40%),
               radial-gradient(circle at 10% 80%, hsl(280, 80%, 96%) 0%, transparent 40%);
+  transition: background 0.6s ease;
 }
 
 #home::before {
