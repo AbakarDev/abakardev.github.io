@@ -1,41 +1,49 @@
-// Récupérer les paramètres de l'URL
-const urlParams = new URLSearchParams(window.location.search);
-const title = urlParams.get("title");
-const src = urlParams.get("src");
-const description = urlParams.get("description");
+'use strict';
 
-// Afficher les détails
-document.getElementById("detail-image").src = src;
-document.getElementById("detail-title").textContent = title;
-document.getElementById("detail-description").textContent = description;
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Get URL Parameters ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const title       = urlParams.get("title");
+  const src         = urlParams.get("src");
+  const description = urlParams.get("description");
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Vérifier l'état du thème au chargement de la page
+  // --- Utility functions ---
+  const $ = (sel) => document.querySelector(sel);
+
+  // --- Display Data with basic protection ---
+  if (title) $('#detail-title').textContent = title;
+  if (src)   $('#detail-image').src = src;
+  if (description) $('#detail-description').textContent = description;
+
+  // --- Dark Mode Sync ---
   const savedTheme = localStorage.getItem("theme");
+  document.body.classList.toggle("active", savedTheme === "dark");
 
-  // Appliquer le thème en fonction de la valeur dans localStorage
-  if (savedTheme === "dark") {
-    applyDarkTheme();
-  } else {
-    applyLightTheme();
-  }
+  // --- Custom Cursor (Interpolated for smoothness) ---
+  const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+  if (!isTouchDevice()) {
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor';
+    document.body.appendChild(cursor);
 
-  // Fonctions pour appliquer les thèmes
-  function applyDarkTheme() {
-    document.body.classList.add("active");
-    // Appliquez ici les styles spécifiques au mode sombre pour la page détails
-    document.querySelectorAll(".details-section").forEach((elem) => {
-      elem.style.backgroundColor = "black";
-      elem.style.color = "white";
-    });
-  }
+    let cx = 0, cy = 0, tx = 0, ty = 0;
+    document.addEventListener('mousemove', e => {
+      tx = e.clientX;
+      ty = e.clientY;
+    }, { passive: true });
 
-  function applyLightTheme() {
-    document.body.classList.remove("active");
-    // Appliquez ici les styles spécifiques au mode clair pour la page détails
-    document.querySelectorAll(".details-section").forEach((elem) => {
-      elem.style.backgroundColor = "#f4f4f4";
-      elem.style.color = "black";
+    const animateCursor = () => {
+      cx += (tx - cx) * 0.3;
+      cy += (ty - cy) * 0.3;
+      cursor.style.left = `${cx}px`;
+      cursor.style.top  = `${cy}px`;
+      requestAnimationFrame(animateCursor);
+    };
+    requestAnimationFrame(animateCursor);
+
+    document.querySelectorAll('a, button, .btn').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
     });
   }
 });

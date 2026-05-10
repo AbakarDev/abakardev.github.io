@@ -1,143 +1,216 @@
-document.addEventListener("DOMContentLoaded", function () {
-  let currentIndex = 0;
-  const images = document.querySelectorAll(".slideshow img");
-  const prevButton = document.querySelector(".slideshow .prev");
-  const nextButton = document.querySelector(".slideshow .next");
-  const detailButtons = document.querySelectorAll(".slideshow .details-button");
+'use strict';
 
-  // Fonction pour afficher l'image actuelle
-  function showImage(index) {
-    images.forEach((img, i) => {
-      const container = img.parentElement;
-      img.classList.toggle("active", i === index);
-      container.classList.toggle("active", i === index);
-    });
-  }
+document.addEventListener('DOMContentLoaded', () => {
 
-  // Fonction pour passer à l'image suivante
-  function nextImage() {
-    currentIndex = (currentIndex + 1) % images.length;
-    showImage(currentIndex);
-  }
+  /* ── Utilitaire sécurisé ── */
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
-  // Fonction pour revenir à l'image précédente
-  function prevImage() {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    showImage(currentIndex);
-  }
+  /* ── Année footer ── */
+  const yearEl = $('#footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Fonction pour rediriger vers la page de détails
-  function redirectToDetails(title, src, description) {
-    const queryParams = new URLSearchParams({
-      title,
-      src,
-      description,
-    }).toString();
-    window.location.href = `details.html?${queryParams}`;
-  }
-
-  // Ajouter des écouteurs d'événements pour les boutons précédent et suivant
-  prevButton.addEventListener("click", prevImage);
-  nextButton.addEventListener("click", nextImage);
-
-  // Ajouter des écouteurs d'événements pour les boutons de détails
-  detailButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      const img = images[index];
-      const title = img.getAttribute("data-title");
-      const src = img.getAttribute("src");
-      const description = img.getAttribute("data-description");
-      redirectToDetails(title, src, description);
-    });
+  /* ── Formulaire Contact (mailto fallback) ── */
+  const form = $('#contact-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name    = form.querySelector('#contact-name')?.value.trim();
+    const email   = form.querySelector('#contact-email')?.value.trim();
+    const subject = form.querySelector('#contact-subject')?.value.trim();
+    const message = form.querySelector('#contact-message')?.value.trim();
+    if (!name || !email || !subject || !message) return;
+    const body = encodeURIComponent(`Bonjour Abakar,\n\nNom : ${name}\nEmail : ${email}\n\n${message}`);
+    window.location.href = `mailto:abakarbrahim702@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
   });
 
-  // Afficher la première image au chargement de la page
-  showImage(currentIndex);
+  /* ── Header / Navigation ── */
+  const header   = $('header');
+  const menuIcon = $('#menu-icon');
+  const navbar   = $('.navbar');
+  const navLinks = $$('.navbar a');
 
-  // Sticky Navbar
-  let header = document.querySelector("header");
-  let menu = document.querySelector("#menu-icon");
-  let navbar = document.querySelector(".navbar");
+  menuIcon?.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+    menuIcon.classList.toggle('bx-x');
+  });
 
-  menu.onclick = () => {
-    navbar.classList.toggle("active");
-  };
-  window.onscroll = () => {
-    navbar.classList.remove("active");
-  };
+  /* Ferme le menu mobile si clic en dehors */
+  document.addEventListener('click', (e) => {
+    if (navbar.classList.contains('active') &&
+        !navbar.contains(e.target) &&
+        !menuIcon.contains(e.target)) {
+      navbar.classList.remove('active');
+      menuIcon.classList.remove('bx-x');
+    }
+  });
 
-  // Dark Mode
-  let darkmode = document.querySelector("#modesombre");
-  darkmode.style.cursor = "pointer";
+  /* Sticky header + lien actif au scroll */
+  const sections = $$('section[id]');
 
-  // Vérifier l'état du thème au chargement de la page
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("active");
-    darkmode.classList.replace("bx-moon", "bx-sun");
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
 
-  } else {
-    document.body.classList.remove("active");
-    darkmode.classList.replace("bx-sun", "bx-moon");
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
 
-  }
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      link.classList.toggle('active', href.includes(current) && current !== '');
+    });
 
-  // Gestion du changement de thème
-  darkmode.onclick = () => {
-    if (darkmode.classList.contains("bx-moon")) {
-      darkmode.classList.replace("bx-moon", "bx-sun");
-
-      document.body.classList.add("active");
-      localStorage.setItem("theme", "dark"); // Enregistrer le thème sombre
-    } else {
-      darkmode.classList.replace("bx-sun", "bx-moon");
-
-      document.body.classList.remove("active");
-      localStorage.setItem("theme", "light"); // Enregistrer le thème clair
+    /* Fermer le menu au scroll sur mobile */
+    if (navbar.classList.contains('active')) {
+      navbar.classList.remove('active');
+      menuIcon.classList.remove('bx-x');
     }
   };
 
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        onScroll();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
 
-  // Skills Animation
-  const skillsSection = document.querySelector(".skills");
-  const progressBars = document.querySelectorAll(".percent-bar");
-  const counters = document.querySelectorAll(".counter");
+  /* ── Mode sombre ── */
+  const darkBtn = $('#modesombre');
+  const applyTheme = (dark) => {
+    document.body.classList.toggle('active', dark);
+    darkBtn?.classList.toggle('bx-moon', !dark);
+    darkBtn?.classList.toggle('bx-sun',   dark);
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  };
 
-  function startSkillAnimation() {
-    progressBars.forEach((bar) => {
-      bar.classList.add("animate");
+  applyTheme(localStorage.getItem('theme') === 'dark');
+  darkBtn?.addEventListener('click', () => applyTheme(!document.body.classList.contains('active')));
+
+  /* ── Scroll Reveal (IntersectionObserver) ── */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+
+  $$('.reveal').forEach(el => revealObs.observe(el));
+
+  /* ── Barres de compétences ── */
+  const skillSection = $('#skills');
+  if (skillSection) {
+    const skillObs = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      $$('.skill-fill').forEach(fill => { fill.style.width = fill.dataset.width; });
+      $$('.skill-percent').forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        let current = 0;
+        const step = target / 60;
+        const tick = () => {
+          current = Math.min(current + step, target);
+          el.textContent = Math.ceil(current) + '%';
+          if (current < target) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+      skillObs.disconnect();
+    }, { threshold: 0.4 });
+    skillObs.observe(skillSection);
+  }
+
+  /* ── Effet magnétique sur les boutons ── */
+  $$('.btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width  / 2) * 0.15;
+      const y = (e.clientY - r.top  - r.height / 2) * 0.15;
+      btn.style.transform = `translate(${x}px,${y}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+
+  /* ── Curseur personnalisé ── */
+  const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+  if (!isTouchDevice()) {
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor';
+    document.body.appendChild(cursor);
+
+    let cx = 0, cy = 0, tx = 0, ty = 0;
+    document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
+
+    const animateCursor = () => {
+      cx += (tx - cx) * 0.3;
+      cy += (ty - cy) * 0.3;
+      cursor.style.left = `${cx}px`;
+      cursor.style.top  = `${cy}px`;
+      requestAnimationFrame(animateCursor);
+    };
+    requestAnimationFrame(animateCursor);
+
+    $$('a, button, .portfolio-card, .info-card, #modesombre, #menu-icon').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
     });
 
-    counters.forEach((counter) => {
-      const target = +counter.getAttribute("data-target");
-      const duration = 2000; // 2 seconds
-      const increment = target / (duration / 16); // 60fps
+    document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
+  }
 
-      let current = 0;
-      const updateCounter = () => {
-        current += increment;
-        if (current < target) {
-          counter.innerText = Math.ceil(current) + "%";
-          requestAnimationFrame(updateCounter);
-        } else {
-          counter.innerText = target + "%";
-        }
-      };
-      updateCounter();
+  /* ── Galerie Slideshow ── */
+  const slides    = $$('.slideshow-container img');
+  const prevBtn   = $('.prev');
+  const nextBtn   = $('.next');
+  const slideshow = $('.slideshow');
+
+  if (slides.length) {
+    let idx = 0;
+    let autoTimer = null;
+
+    const showSlide = (i) => {
+      slides.forEach(s => s.classList.remove('active'));
+      slides[i].classList.add('active');
+    };
+
+    const next = () => { idx = (idx + 1) % slides.length; showSlide(idx); };
+    const prev = () => { idx = (idx - 1 + slides.length) % slides.length; showSlide(idx); };
+
+    const startAuto = () => { autoTimer = setInterval(next, 5000); };
+    const stopAuto  = () => { clearInterval(autoTimer); };
+
+    nextBtn?.addEventListener('click', () => { next(); stopAuto(); startAuto(); });
+    prevBtn?.addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
+    slideshow?.addEventListener('mouseenter', stopAuto);
+    slideshow?.addEventListener('mouseleave', startAuto);
+
+    /* Swipe tactile */
+    let touchStartX = 0;
+    slideshow?.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    slideshow?.addEventListener('touchend',   e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); stopAuto(); startAuto(); }
+    });
+
+    startAuto();
+
+    /* Bouton Détails → page détails */
+    const detailBtn = $('.details-button');
+    detailBtn?.addEventListener('click', () => {
+      const slide = slides[idx];
+      const params = new URLSearchParams({
+        title:       slide.dataset.title       || '',
+        src:         slide.getAttribute('src') || '',
+        description: slide.dataset.description || ''
+      });
+      window.location.href = `details.html?${params}`;
     });
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      if (entries[0].isIntersecting) {
-        startSkillAnimation();
-        observer.disconnect(); // Run only once
-      }
-    },
-    { threshold: 0.1 }
-  );
-
-  if (skillsSection) {
-    observer.observe(skillsSection);
+  /* ── Compteur d'années d'expérience (hero) ── */
+  const expYearEl = $('#experience-years');
+  if (expYearEl) {
+    expYearEl.textContent = new Date().getFullYear() - 2022;
   }
+
 });
