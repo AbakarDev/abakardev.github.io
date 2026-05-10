@@ -1,0 +1,33 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/settings.json
+.vscode/*.log
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment / secrets (JAMAIS en ligne)
+.env
+.env.*
+secrets.*
+
+# Build / cache
+dist/
+build/
+.cache/
+node_modules/
+
+# Fichiers temporaires
+*.tmp
+*.bak
+
+# Fichiers personnels non destinés à être publiés
+Cv.pdf

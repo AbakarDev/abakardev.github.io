@@ -1,200 +1,207 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // --- Navigation & Scroll Effects ---
-  const header = document.querySelector("header");
-  const menuIcon = document.querySelector("#menu-icon");
-  const navbar = document.querySelector(".navbar");
-  const navLinks = document.querySelectorAll(".navbar a");
+'use strict';
 
-  // Mobile Menu Toggle
-  menuIcon.onclick = () => {
-    navbar.classList.toggle("active");
-    menuIcon.classList.toggle("bx-x");
-  };
+document.addEventListener('DOMContentLoaded', () => {
 
-  // Sticky Header & Active Link on Scroll
-  window.addEventListener("scroll", () => {
-    // Header shadow and height
-    if (window.scrollY > 50) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
+  /* ── Utilitaire sécurisé ── */
+  const $ = (sel, ctx = document) => ctx.querySelector(sel);
+  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
-    // Active link highlighting
-    let current = "";
-    const sections = document.querySelectorAll("section");
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      if (pageYOffset >= sectionTop - 100) {
-        current = section.getAttribute("id");
-      }
-    });
+  /* ── Année footer ── */
+  const yearEl = $('#footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href").includes(current)) {
-        link.classList.add("active");
-      }
-    });
-
-    // Close mobile menu on scroll
-    navbar.classList.remove("active");
-    menuIcon.classList.remove("bx-x");
+  /* ── Formulaire Contact (mailto fallback) ── */
+  const form = $('#contact-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name    = form.querySelector('#contact-name')?.value.trim();
+    const email   = form.querySelector('#contact-email')?.value.trim();
+    const subject = form.querySelector('#contact-subject')?.value.trim();
+    const message = form.querySelector('#contact-message')?.value.trim();
+    if (!name || !email || !subject || !message) return;
+    const body = encodeURIComponent(`Bonjour Abakar,\n\nNom : ${name}\nEmail : ${email}\n\n${message}`);
+    window.location.href = `mailto:abakarbrahim702@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
   });
 
-  // --- Scroll Reveal Animation ---
-  const revealElements = document.querySelectorAll(".reveal");
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
-        }
+  /* ── Header / Navigation ── */
+  const header   = $('header');
+  const menuIcon = $('#menu-icon');
+  const navbar   = $('.navbar');
+  const navLinks = $$('.navbar a');
+
+  menuIcon?.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+    menuIcon.classList.toggle('bx-x');
+  });
+
+  /* Ferme le menu mobile si clic en dehors */
+  document.addEventListener('click', (e) => {
+    if (navbar.classList.contains('active') &&
+        !navbar.contains(e.target) &&
+        !menuIcon.contains(e.target)) {
+      navbar.classList.remove('active');
+      menuIcon.classList.remove('bx-x');
+    }
+  });
+
+  /* Sticky header + lien actif au scroll */
+  const sections = $$('section[id]');
+
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 50);
+
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      link.classList.toggle('active', href.includes(current) && current !== '');
+    });
+
+    /* Fermer le menu au scroll sur mobile */
+    if (navbar.classList.contains('active')) {
+      navbar.classList.remove('active');
+      menuIcon.classList.remove('bx-x');
+    }
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* ── Mode sombre ── */
+  const darkBtn = $('#modesombre');
+  const applyTheme = (dark) => {
+    document.body.classList.toggle('active', dark);
+    darkBtn?.classList.toggle('bx-moon', !dark);
+    darkBtn?.classList.toggle('bx-sun',   dark);
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  };
+
+  applyTheme(localStorage.getItem('theme') === 'dark');
+  darkBtn?.addEventListener('click', () => applyTheme(!document.body.classList.contains('active')));
+
+  /* ── Scroll Reveal (IntersectionObserver) ── */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+
+  $$('.reveal').forEach(el => revealObs.observe(el));
+
+  /* ── Barres de compétences ── */
+  const skillSection = $('#skills');
+  if (skillSection) {
+    const skillObs = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+      $$('.skill-fill').forEach(fill => { fill.style.width = fill.dataset.width; });
+      $$('.skill-percent').forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        let current = 0;
+        const step = target / 60;
+        const tick = () => {
+          current = Math.min(current + step, target);
+          el.textContent = Math.ceil(current) + '%';
+          if (current < target) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
       });
-    },
-    { threshold: 0.1 }
-  );
-
-  revealElements.forEach((el) => revealObserver.observe(el));
-
-  // --- Dark Mode ---
-  const darkmodeBtn = document.querySelector("#modesombre");
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme === "dark") {
-    document.body.classList.add("active");
-    darkmodeBtn.classList.replace("bx-moon", "bx-sun");
+      skillObs.disconnect();
+    }, { threshold: 0.4 });
+    skillObs.observe(skillSection);
   }
 
-  darkmodeBtn.onclick = () => {
-    document.body.classList.toggle("active");
-    if (document.body.classList.contains("active")) {
-      darkmodeBtn.classList.replace("bx-moon", "bx-sun");
-      localStorage.setItem("theme", "dark");
-    } else {
-      darkmodeBtn.classList.replace("bx-sun", "bx-moon");
-      localStorage.setItem("theme", "light");
-    }
-  };
-
-  // --- Skills Animation ---
-  const skillSection = document.querySelector("#skills");
-  const skillFills = document.querySelectorAll(".skill-fill");
-  const skillPercents = document.querySelectorAll(".skill-percent");
-
-  const skillObserver = new IntersectionObserver(
-    (entries) => {
-      if (entries[0].isIntersecting) {
-        skillFills.forEach((fill) => {
-          fill.style.width = fill.getAttribute("data-width");
-        });
-        
-        skillPercents.forEach((percent) => {
-          const target = parseInt(percent.getAttribute("data-target"));
-          let current = 0;
-          const increment = target / 60; // adjust animation speed
-          
-          const updateCounter = () => {
-            current += increment;
-            if (current < target) {
-              percent.innerText = Math.ceil(current) + "%";
-              requestAnimationFrame(updateCounter);
-            } else {
-              percent.innerText = target + "%";
-            }
-          };
-          updateCounter();
-        });
-        
-        skillObserver.disconnect();
-      }
-    },
-    { threshold: 0.5 }
-  );
-
-  if (skillSection) skillObserver.observe(skillSection);
-
-  // --- Magnetic Buttons Effect ---
-  const magnets = document.querySelectorAll('.btn');
-  magnets.forEach(magnet => {
-    magnet.addEventListener('mousemove', function(e) {
-      const position = magnet.getBoundingClientRect();
-      const x = e.clientX - position.left - position.width / 2;
-      const y = e.clientY - position.top - position.height / 2;
-      
-      this.style.transition = 'none';
-      this.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+  /* ── Effet magnétique sur les boutons ── */
+  $$('.btn').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width  / 2) * 0.15;
+      const y = (e.clientY - r.top  - r.height / 2) * 0.15;
+      btn.style.transform = `translate(${x}px,${y}px)`;
     });
-    
-    magnet.addEventListener('mouseleave', function() {
-      this.style.transition = 'var(--transition)';
-      this.style.transform = 'translate(0px, 0px)';
-    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
   });
 
-  // --- Custom Cursor ---
-  const cursor = document.createElement('div');
-  cursor.classList.add('cursor');
-  document.body.appendChild(cursor);
+  /* ── Curseur personnalisé ── */
+  const isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+  if (!isTouchDevice()) {
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor';
+    document.body.appendChild(cursor);
 
-  document.addEventListener('mousemove', e => {
-    // using requestAnimationFrame for smoother custom cursor can be nice, 
-    // but updating inline styles directly inside mousemove works well for position absolute
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
+    let cx = 0, cy = 0, tx = 0, ty = 0;
+    document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
 
-  const hoverElements = document.querySelectorAll('a, button, .portfolio-card, .info-card, #modesombre, #menu-icon');
-  hoverElements.forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-  });
-
-  // --- Gallery Slideshow ---
-  let currentIndex = 0;
-  const slides = document.querySelectorAll(".slideshow-container img");
-  const prevBtn = document.querySelector(".prev");
-  const nextBtn = document.querySelector(".next");
-  const detailButtons = document.querySelectorAll(".details-button");
-
-  function showSlide(index) {
-    slides.forEach((slide) => slide.classList.remove("active"));
-    slides[index].classList.add("active");
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  if (nextBtn) nextBtn.onclick = nextSlide;
-  if (prevBtn) prevBtn.onclick = prevSlide;
-
-  // Auto slide
-  let slideInterval = setInterval(nextSlide, 5000);
-
-  // Stop auto slide on interaction
-  const slideshow = document.querySelector(".slideshow");
-  if (slideshow) {
-    slideshow.onmouseenter = () => clearInterval(slideInterval);
-    slideshow.onmouseleave = () => (slideInterval = setInterval(nextSlide, 5000));
-  }
-
-  // Details Redirect
-  const detailButton = document.querySelector(".details-button");
-  if (detailButton) {
-    detailButton.onclick = () => {
-      const slide = slides[currentIndex];
-      const title = slide.getAttribute("data-title");
-      const src = slide.getAttribute("src");
-      const desc = slide.getAttribute("data-description");
-      const params = new URLSearchParams({ title, src, description: desc }).toString();
-      window.location.href = `details.html?${params}`;
+    const animateCursor = () => {
+      cx += (tx - cx) * 0.12;
+      cy += (ty - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top  = cy + 'px';
+      requestAnimationFrame(animateCursor);
     };
+    requestAnimationFrame(animateCursor);
+
+    $$('a, button, .portfolio-card, .info-card, #modesombre, #menu-icon').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+    });
+
+    document.addEventListener('mouseleave', () => { cursor.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { cursor.style.opacity = '1'; });
   }
+
+  /* ── Galerie Slideshow ── */
+  const slides    = $$('.slideshow-container img');
+  const prevBtn   = $('.prev');
+  const nextBtn   = $('.next');
+  const slideshow = $('.slideshow');
+
+  if (slides.length) {
+    let idx = 0;
+    let autoTimer = null;
+
+    const showSlide = (i) => {
+      slides.forEach(s => s.classList.remove('active'));
+      slides[i].classList.add('active');
+    };
+
+    const next = () => { idx = (idx + 1) % slides.length; showSlide(idx); };
+    const prev = () => { idx = (idx - 1 + slides.length) % slides.length; showSlide(idx); };
+
+    const startAuto = () => { autoTimer = setInterval(next, 5000); };
+    const stopAuto  = () => { clearInterval(autoTimer); };
+
+    nextBtn?.addEventListener('click', () => { next(); stopAuto(); startAuto(); });
+    prevBtn?.addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
+    slideshow?.addEventListener('mouseenter', stopAuto);
+    slideshow?.addEventListener('mouseleave', startAuto);
+
+    /* Swipe tactile */
+    let touchStartX = 0;
+    slideshow?.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; }, { passive: true });
+    slideshow?.addEventListener('touchend',   e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) { dx < 0 ? next() : prev(); stopAuto(); startAuto(); }
+    });
+
+    startAuto();
+
+    /* Bouton Détails → page détails */
+    const detailBtn = $('.details-button');
+    detailBtn?.addEventListener('click', () => {
+      const slide = slides[idx];
+      const params = new URLSearchParams({
+        title:       slide.dataset.title       || '',
+        src:         slide.getAttribute('src') || '',
+        description: slide.dataset.description || ''
+      });
+      window.location.href = `details.html?${params}`;
+    });
+  }
+
+  /* ── Compteur d'années d'expérience (hero) ── */
+  const yearEl = $('#experience-years');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear() - 2022;
+  }
+
 });
