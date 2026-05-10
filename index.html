@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Sécurité -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data: https://abakardev.github.io; connect-src 'self'; frame-src 'self' https://www.youtube.com;" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
@@ -50,15 +51,16 @@
   </script>
 
   <!-- Favicons & PWA -->
-  <link rel="icon" type="image/png" href="logo.png" sizes="192x192" />
-  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="icon" type="image/webp" href="logo.webp" />
+  <link rel="apple-touch-icon" href="logo.webp" />
   <meta name="theme-color" content="#6366f1" />
 
   <!-- Boxicons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
-  <!-- Google Fonts (préchargé) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="slide.css" />
 </head>
 
@@ -66,7 +68,7 @@
   <!-- ══ Navigation ══ -->
   <header role="banner">
     <a href="#home" class="logo" aria-label="Accueil – Abakar Brahim Abakar">
-      <img src="logo.png" alt="Logo ABA" width="45" height="45" />
+      <img src="logo.webp" alt="Logo ABA" width="45" height="45" />
       <span>Abakar Brahim</span>
     </a>
 
@@ -253,10 +255,8 @@
 
         <!-- Projet 4 – Portfolio -->
         <article class="portfolio-card">
-          <div class="portfolio-img portfolio-img--gradient">
-            <div class="portfolio-img-placeholder" aria-label="Portfolio personnel">
-              <i class="bx bx-globe" aria-hidden="true"></i>
-            </div>
+          <div class="portfolio-img">
+            <img src="Images/portfolio_preview.png" alt="Portfolio personnel Abakar" loading="lazy" />
           </div>
           <div class="portfolio-content">
             <div class="project-tags">
@@ -519,7 +519,7 @@
   <!-- ══ Footer ══ -->
   <footer role="contentinfo">
     <div class="footer-content">
-      <img src="logo.png" alt="Logo Abakar Brahim Abakar" class="footer-logo" loading="lazy" width="65" height="65" />
+      <img src="logo.webp" alt="Logo Abakar Brahim Abakar" class="footer-logo" loading="lazy" width="65" height="65" />
       <h3>Abakar Brahim Abakar</h3>
       <p>Développeur Full-Stack Junior · N'Djaména, Tchad</p>
 
@@ -532,7 +532,7 @@
       </nav>
 
       <div class="copyright">
-        <p>&copy; <span id="footer-year"></span> Abakar Brahim Abakar. Conçu avec passion 🚀</p>
+        <p><span id="footer-year"></span> Abakar Brahim Abakar. Conçu avec passion</p>
       </div>
     </div>
   </footer>

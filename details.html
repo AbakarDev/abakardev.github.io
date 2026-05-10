@@ -6,8 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Détails du Projet | Abakar Brahim Abakar</title>
 
+  <!-- SEO & Favicon -->
+  <link rel="icon" type="image/webp" href="logo.webp" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="slide.css" />
+
   <style>
     body {
       min-height: 100vh;
@@ -15,60 +19,63 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 40px 10%;
+      padding: 40px 5%;
+      background: var(--bg-soft);
     }
 
     .details-card {
       background: var(--card-bg);
-      padding: 3rem;
-      border-radius: 32px;
+      padding: clamp(1.5rem, 5vw, 3.5rem);
+      border-radius: var(--radius);
       box-shadow: var(--shadow-lg);
       border: 1px solid var(--border);
-      max-width: 1000px;
+      max-width: 1100px;
       width: 100%;
       text-align: center;
       transition: var(--transition);
       animation: slideUp 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+      backdrop-filter: blur(10px);
     }
 
     @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .details-img-wrapper {
-      border-radius: 24px;
+      border-radius: calc(var(--radius) - 8px);
       overflow: hidden;
       box-shadow: var(--shadow-md);
       margin-bottom: 2.5rem;
       aspect-ratio: 16/9;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
     }
 
     .details-img-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 1s ease;
+    }
+
+    .details-card:hover .details-img-wrapper img {
+      transform: scale(1.03);
     }
 
     .details-content h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      margin-bottom: 1.2rem;
       color: var(--text);
+      font-weight: 800;
     }
 
     .details-content p {
       color: var(--text-soft);
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
       line-height: 1.8;
-      margin-bottom: 2.5rem;
-      max-width: 800px;
+      margin-bottom: 3rem;
+      max-width: 850px;
       margin-inline: auto;
     }
 
@@ -78,44 +85,15 @@
       justify-content: center;
     }
 
-    /* Small hack for dark mode if body active is not enough */
+    /* Dark mode adjustments */
     body.active .details-card {
       background: var(--card-bg);
     }
 
-    /* Responsive Details */
     @media (max-width: 768px) {
-      body {
-        padding: 20px 5%;
-      }
-
-      .details-card {
-        padding: 1.5rem;
-        border-radius: 20px;
-      }
-
-      .details-content h2 {
-        font-size: 1.8rem;
-      }
-
-      .details-content p {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .details-img-wrapper {
-        border-radius: 16px;
-        margin-bottom: 1.5rem;
-      }
-
-      .btn-group {
-        flex-direction: column;
-      }
-
-      .btn-group .btn {
-        width: 100%;
-        justify-content: center;
-      }
+      body { padding: 30px 5%; }
+      .btn-group { flex-direction: column; }
+      .btn-group .btn { width: 100%; }
     }
   </style>
 </head>
@@ -123,15 +101,18 @@
 <body>
   <div class="details-card">
     <div class="details-img-wrapper">
-      <img id="detail-image" src="" alt="Détails du projet" />
+      <img id="detail-image" src="" alt="Aperçu du projet" loading="lazy" />
     </div>
     <div class="details-content">
-      <h2 id="detail-title"></h2>
-      <p id="detail-description"></p>
+      <h2 id="detail-title">Chargement...</h2>
+      <p id="detail-description">Veuillez patienter pendant le chargement des détails.</p>
 
       <div class="btn-group">
-        <a href="index.html" class="btn">
-          <i class='bx bx-left-arrow-alt'></i> Retour
+        <a href="index.html#portfolio" class="btn secondary">
+          <i class='bx bx-left-arrow-alt'></i> Retour aux projets
+        </a>
+        <a href="mailto:abakarbrahim702@gmail.com" class="btn">
+          Me contacter <i class='bx bx-send'></i>
         </a>
       </div>
     </div>

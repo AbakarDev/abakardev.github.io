@@ -67,7 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        onScroll();
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
 
   /* ── Mode sombre ── */
   const darkBtn = $('#modesombre');
@@ -199,9 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ── Compteur d'années d'expérience (hero) ── */
-  const yearEl = $('#experience-years');
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear() - 2022;
+  const expYearEl = $('#experience-years');
+  if (expYearEl) {
+    expYearEl.textContent = new Date().getFullYear() - 2022;
   }
 
 });
