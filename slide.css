@@ -301,8 +301,8 @@ header.scrolled {
 
 .home-text h1 {
   font-size: clamp(2.5rem, 8vw, 4.2rem);
-  line-height: 1;
-  margin-bottom: 1.5rem;
+  line-height: 1.15; /* Increased for better readability */
+  margin-bottom: 1.2rem;
   font-weight: 800;
   background: linear-gradient(to bottom right, var(--text) 50%, var(--text-soft));
   -webkit-background-clip: text;
@@ -313,15 +313,16 @@ header.scrolled {
 .home-text h2 {
   font-size: 1.4rem;
   color: var(--text-soft);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* Slightly reduced to group with h1 */
   font-weight: 500;
 }
 
 .home-text p {
   font-size: 1.15rem;
   color: var(--text-soft);
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   max-width: 550px;
+  line-height: 1.8; /* More professional spacing for long text */
 }
 
 /* Hero Stats */

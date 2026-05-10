@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
 
     const animateCursor = () => {
-      cx += (tx - cx) * 0.12;
-      cy += (ty - cy) * 0.12;
+      cx += (tx - cx) * 0.3;
+      cy += (ty - cy) * 0.3;
       cursor.style.left = `${cx}px`;
       cursor.style.top  = `${cy}px`;
       requestAnimationFrame(animateCursor);
