@@ -1,0 +1,180 @@
+/* ============================================================
+   index.css – Styles globaux du portfolio (Tailwind + custom)
+   ============================================================ */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base layer ── */
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply font-sans bg-white text-slate-900 overflow-x-hidden;
+    @apply dark:bg-dark-bg dark:text-slate-100;
+    transition: background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Texture bruit subtile */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+    letter-spacing: -0.02em;
+  }
+
+  /* Scrollbar personnalisée */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { @apply bg-white dark:bg-dark-bg; }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 dark:bg-slate-700 rounded-full;
+    transition: background 0.3s;
+  }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-primary-500; }
+
+  /* Focus visible accessible */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500 rounded;
+  }
+
+  /* Sélection de texte */
+  ::selection {
+    @apply bg-primary-200 text-primary-900 dark:bg-primary-800 dark:text-primary-100;
+  }
+}
+
+/* ── Components layer ── */
+@layer components {
+
+  /* ── Boutons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-3 px-7 py-3.5 rounded-xl font-semibold
+           bg-primary-500 text-white border border-transparent
+           transition-all duration-400 ease-premium
+           hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-primary-lg;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-3 px-7 py-3.5 rounded-xl font-semibold
+           bg-transparent text-slate-800 dark:text-slate-200
+           border border-slate-200 dark:border-dark-border
+           transition-all duration-400 ease-premium
+           hover:border-primary-400 hover:bg-slate-50 dark:hover:bg-white/5
+           hover:-translate-y-0.5;
+  }
+
+  /* ── Section heading ── */
+  .section-tag {
+    @apply block text-center uppercase tracking-[4px] text-xs font-bold
+           text-primary-500 mb-2;
+  }
+
+  .section-title {
+    @apply text-center font-heading font-extrabold
+           text-4xl md:text-5xl text-slate-900 dark:text-slate-50
+           mb-16;
+  }
+
+  /* ── Carte générique ── */
+  .card {
+    @apply bg-white dark:bg-dark-card border border-slate-100 dark:border-dark-border
+           rounded-3xl shadow-primary-sm transition-all duration-400 ease-premium;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-primary-md hover:border-primary-200
+           dark:hover:border-primary-500/30;
+  }
+
+  /* ── Tags / Badges ── */
+  .tech-tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold
+           bg-primary-50 text-primary-600 dark:bg-primary-950/50 dark:text-primary-300
+           border border-primary-100 dark:border-primary-800/50;
+  }
+
+  /* ── Skill bar ── */
+  .skill-track {
+    @apply h-2.5 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden
+           border border-slate-200 dark:border-primary-900/30;
+  }
+
+  .skill-fill {
+    @apply h-full bg-gradient-to-r from-primary-400 to-primary-600
+           rounded-full transition-all duration-1000 ease-out w-0;
+  }
+
+  /* ── Timeline ── */
+  .timeline-dot {
+    @apply absolute -left-[11px] top-6 w-5 h-5 rounded-full
+           bg-primary-500 border-4 border-white dark:border-dark-bg
+           shadow-[0_0_0_3px_rgba(99,102,241,0.25)];
+  }
+
+  /* ── Badge hero ── */
+  .hero-badge {
+    @apply inline-flex items-center gap-2.5 px-5 py-2 rounded-full
+           bg-primary-500/10 dark:bg-primary-500/10
+           border border-primary-500/20
+           text-primary-600 dark:text-primary-400 text-sm font-bold
+           tracking-wide backdrop-blur-sm mb-8;
+  }
+
+  /* ── Gradient text ── */
+  .gradient-text {
+    @apply bg-gradient-to-br from-slate-900 to-slate-500
+           dark:from-slate-50 dark:to-slate-400
+           bg-clip-text text-transparent;
+  }
+}
+
+/* ── Utilities layer ── */
+@layer utilities {
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/70 dark:bg-white/5 backdrop-blur-xl
+           border border-white/20 dark:border-white/10;
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.25);
+  }
+
+  /* Section padding standard */
+  .section-pad {
+    @apply py-28 px-6 md:px-12 lg:px-24 xl:px-36;
+  }
+
+  /* Reveal animation (non-Framer, fallback) */
+  .reveal {
+    @apply opacity-0 translate-y-8;
+    transition: opacity 0.8s cubic-bezier(0.2, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Morphing border radius sur l'image hero */
+  .morph-img {
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    animation: morph 15s ease-in-out infinite alternate;
+  }
+
+  /* Barre de progression animée */
+  .skill-progress-active {
+    transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
