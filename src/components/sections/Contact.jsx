@@ -118,7 +118,7 @@ export default function Contact() {
           <h2 id="contact-title" className="section-title">{t('contact.title')}</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-16">
 
           {/* ── Informations de contact ── */}
           <motion.div
@@ -177,7 +177,7 @@ export default function Contact() {
               id="contact-form"
               noValidate
               onSubmit={handleSubmit}
-              className="card p-8 space-y-5"
+              className="card p-5 sm:p-8 space-y-5"
             >
               {/* Message de statut */}
               {status === 'success' && (

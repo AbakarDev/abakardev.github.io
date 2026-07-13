@@ -35,7 +35,7 @@ export default function Parcours() {
 
         {/* Timeline */}
         <div className="max-w-3xl mx-auto">
-          <div className="relative border-l-2 border-slate-200 dark:border-dark-border pl-8 space-y-10">
+          <div className="relative border-l-2 border-slate-200 dark:border-dark-border pl-6 sm:pl-8 space-y-8 sm:space-y-10">
             {timeline.map((item, i) => (
               <TimelineItem key={item.id} item={item} index={i} lang={lang} />
             ))}

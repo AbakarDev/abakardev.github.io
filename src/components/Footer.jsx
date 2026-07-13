@@ -59,7 +59,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Navigation footer */}
-          <nav aria-label="Navigation footer" className="flex flex-wrap justify-center gap-6 mt-2">
+          <nav aria-label="Navigation footer" className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}

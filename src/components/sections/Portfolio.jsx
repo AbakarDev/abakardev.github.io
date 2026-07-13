@@ -147,11 +147,11 @@ function ProjectModal({ project, onClose, t, lang }) {
         </button>
 
         {/* Image / Header */}
-        <div className="relative h-64 sm:h-80 w-full shrink-0">
+        <div className="relative h-48 sm:h-64 md:h-80 w-full shrink-0">
           <img src={project.image} alt={project.title[lang] || project.title.fr} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-0 left-0 p-6 sm:p-8">
-            <h3 className="text-3xl sm:text-4xl font-heading font-bold text-white mb-2">{project.title[lang] || project.title.fr}</h3>
+          <div className="absolute bottom-0 left-0 p-4 sm:p-6 sm:p-8">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-white mb-2">{project.title[lang] || project.title.fr}</h3>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
                 <span key={tag} className="px-3 py-1 rounded-full text-xs font-semibold bg-white/20 text-white backdrop-blur-md">
@@ -169,15 +169,15 @@ function ProjectModal({ project, onClose, t, lang }) {
             {project.description[lang] || project.description.fr}
           </p>
 
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row gap-3">
             {project.github && (
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-secondary cursor-hover py-2.5 px-5 flex-1 justify-center">
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-secondary cursor-hover py-2.5 px-5 sm:flex-1 justify-center">
                 <FaGithub className="text-lg" />
                 {t('portfolio.source')}
               </a>
             )}
             {project.demo && (
-              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-primary cursor-hover py-2.5 px-5 flex-1 justify-center">
+              <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-primary cursor-hover py-2.5 px-5 sm:flex-1 justify-center">
                 <HiOutlineExternalLink className="text-lg" />
                 {t('portfolio.demo')}
               </a>

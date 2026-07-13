@@ -58,14 +58,14 @@
 
   /* ── Boutons ── */
   .btn-primary {
-    @apply inline-flex items-center gap-3 px-7 py-3.5 rounded-xl font-semibold
+    @apply inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold
            bg-primary-500 text-white border border-transparent
            transition-all duration-400 ease-premium
            hover:bg-primary-600 hover:-translate-y-0.5 hover:shadow-primary-lg;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-3 px-7 py-3.5 rounded-xl font-semibold
+    @apply inline-flex items-center gap-2 sm:gap-3 px-5 sm:px-7 py-3 sm:py-3.5 rounded-xl font-semibold
            bg-transparent text-slate-800 dark:text-slate-200
            border border-slate-200 dark:border-dark-border
            transition-all duration-400 ease-premium
@@ -81,8 +81,8 @@
 
   .section-title {
     @apply text-center font-heading font-extrabold
-           text-4xl md:text-5xl text-slate-900 dark:text-slate-50
-           mb-16;
+           text-3xl sm:text-4xl md:text-5xl text-slate-900 dark:text-slate-50
+           mb-10 md:mb-16;
   }
 
   /* ── Carte générique ── */
@@ -154,7 +154,7 @@
 
   /* Section padding standard */
   .section-pad {
-    @apply py-28 px-6 md:px-12 lg:px-24 xl:px-36;
+    @apply py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-36;
   }
 
   /* Reveal animation (non-Framer, fallback) */

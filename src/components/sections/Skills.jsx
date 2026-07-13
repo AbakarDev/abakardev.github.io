@@ -60,7 +60,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="card p-8"
+            className="card p-5 sm:p-8"
           >
             <h3 className="font-heading font-bold text-xl text-slate-900 dark:text-slate-100 mb-6">
               {t('skills.tools')}

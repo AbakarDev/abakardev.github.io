@@ -49,7 +49,7 @@ export default function About() {
           <h2 id="about-title" className="section-title">{t('about.title')}</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-24 items-center">
 
           {/* ── Photo ── */}
           <motion.div
@@ -59,9 +59,9 @@ export default function About() {
             viewport={{ once: true, amount: 0.2 }}
             className="relative group"
           >
-            {/* Cadre décoratif */}
+            {/* Cadre décoratif - caché sur mobile pour éviter l'overflow */}
             <div className="absolute -top-5 -left-5 w-full h-full border-2 border-primary-500/30
-                            rounded-[28px] transition-all duration-500
+                            rounded-[28px] transition-all duration-500 hidden sm:block
                             group-hover:translate-x-4 group-hover:translate-y-4
                             group-hover:border-primary-500/60 group-hover:rounded-[60%_40%_40%_60%/40%_40%_60%_60%]" />
             {/* Halo */}

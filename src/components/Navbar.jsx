@@ -34,7 +34,7 @@ export default function Navbar() {
   // Ferme le menu mobile au resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) setMenuOpen(false);
+      if (window.innerWidth >= 1024) setMenuOpen(false);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -56,7 +56,7 @@ export default function Navbar() {
             : 'h-[80px] bg-transparent backdrop-blur-sm'
           }`}
       >
-        <div className="h-full flex items-center justify-between px-6 md:px-12 lg:px-24 xl:px-36 max-w-8xl mx-auto">
+        <div className="h-full flex items-center justify-between px-4 sm:px-6 lg:px-12 xl:px-24 2xl:px-36 max-w-8xl mx-auto">
 
           {/* Logo */}
           <a
@@ -78,9 +78,9 @@ export default function Navbar() {
             <span className="hidden sm:block">Abakar Brahim</span>
           </a>
 
-          {/* Navigation desktop */}
-          <nav aria-label="Navigation principale" className="hidden md:block">
-            <ul className="flex gap-8 items-center" role="list">
+          {/* Navigation desktop – visible seulement à lg+ pour éviter l'overflow sur tablette */}
+          <nav aria-label="Navigation principale" className="hidden lg:block">
+            <ul className="flex gap-5 xl:gap-8 items-center" role="list">
               {navLinks.map((link) => {
                 const isActive = activeId === link.href.replace('#', '');
                 return (
@@ -146,7 +146,7 @@ export default function Navbar() {
               aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-xl
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl
                          text-slate-700 dark:text-slate-200 text-2xl
                          hover:bg-slate-100 dark:hover:bg-white/5 transition-colors duration-200"
             >
@@ -169,7 +169,7 @@ export default function Navbar() {
             transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
             className="fixed inset-y-0 left-0 z-40 w-72
                        bg-white dark:bg-dark-bg border-r border-slate-100 dark:border-dark-border
-                       shadow-2xl flex flex-col pt-24 px-8 gap-3 md:hidden"
+                       shadow-2xl flex flex-col pt-24 px-8 gap-3 lg:hidden"
           >
             {navLinks.map((link, i) => {
               const isActive = activeId === link.href.replace('#', '');
@@ -207,7 +207,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setMenuOpen(false)}
-            className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-30 bg-black/20 backdrop-blur-sm lg:hidden"
           />
         )}
       </AnimatePresence>

@@ -49,17 +49,17 @@ export default function Hero() {
       </div>
 
       <div className="relative w-full max-w-8xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-20 items-center">
 
           {/* ── Contenu textuel ── */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="order-2 lg:order-1"
+            className="order-2 lg:order-1 text-center lg:text-left"
           >
             {/* Badge disponibilité */}
-            <motion.div variants={fadeUp}>
+            <motion.div variants={fadeUp} className="flex justify-center lg:justify-start">
               <span className="hero-badge">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse-dot flex-shrink-0" />
                 {t('hero.available')}
@@ -70,8 +70,8 @@ export default function Hero() {
             <motion.h1
               id="hero-title"
               variants={fadeUp}
-              className="font-heading font-extrabold text-5xl md:text-6xl xl:text-7xl
-                         leading-[1.1] mb-6 gradient-text"
+              className="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl xl:text-7xl
+                         leading-[1.1] mb-4 sm:mb-6 gradient-text"
             >
               {personal.nameShort}
               <br />
@@ -89,7 +89,7 @@ export default function Hero() {
             {/* Description */}
             <motion.p
               variants={fadeUp}
-              className="text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-10 max-w-[520px]"
+              className="text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-8 sm:mb-10 max-w-[520px] mx-auto lg:mx-0"
             >
               {personal.description[lang] || personal.description.fr}
             </motion.p>
@@ -97,7 +97,7 @@ export default function Hero() {
             {/* Stats */}
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap gap-4 mb-10"
+              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8 sm:mb-10"
             >
               {heroStats.map((stat) => {
                 const Icon = icons[stat.icon];
@@ -125,7 +125,7 @@ export default function Hero() {
             </motion.div>
 
             {/* Boutons CTA */}
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+            <motion.div variants={fadeUp} className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
               <button
                 onClick={() => handleScroll('#portfolio')}
                 className="btn-primary cursor-hover"
@@ -150,7 +150,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
-            className="relative order-1 lg:order-2 flex justify-center items-center"
+            className="relative order-1 lg:order-2 flex justify-center items-center py-6 lg:py-0"
             aria-hidden="true"
           >
             {/* Anneau tournant */}
@@ -166,8 +166,8 @@ export default function Hero() {
               alt="Abakar Brahim Abakar, Développeur Full-Stack"
               width={440}
               height={440}
-              className="relative z-10 w-full max-w-[380px] lg:max-w-[440px] object-cover
-                         morph-img border-8 border-white dark:border-dark-soft
+              className="relative z-10 w-full max-w-[200px] sm:max-w-[260px] lg:max-w-[440px] object-cover
+                         morph-img border-4 sm:border-8 border-white dark:border-dark-soft
                          shadow-primary-xl"
               loading="eager"
               fetchPriority="high"
