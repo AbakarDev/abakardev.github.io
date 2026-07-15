@@ -150,7 +150,7 @@ function ProjectModal({ project, onClose, t, lang }) {
         <div className="relative h-48 sm:h-64 md:h-80 w-full shrink-0">
           <img src={project.image} alt={project.title[lang] || project.title.fr} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-0 left-0 p-4 sm:p-6 sm:p-8">
+          <div className="absolute bottom-0 left-0 p-4 sm:p-6 md:p-8">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-heading font-bold text-white mb-2">{project.title[lang] || project.title.fr}</h3>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (

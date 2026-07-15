@@ -40,12 +40,12 @@ export default function Hero() {
                  section-pad"
     >
       {/* Fond gradient radial */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[20%] right-[-5%] w-[500px] h-[500px]
-                        bg-primary-500 rounded-full blur-[150px] opacity-[0.07] dark:opacity-[0.08]
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[20%] right-[-5%] w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] lg:w-[500px] lg:h-[500px]
+                        bg-primary-500 rounded-full blur-[100px] sm:blur-[150px] opacity-[0.07] dark:opacity-[0.08]
                         animate-float-blob" />
-        <div className="absolute bottom-[10%] left-[5%] w-[350px] h-[350px]
-                        bg-accent rounded-full blur-[120px] opacity-[0.05] dark:opacity-[0.06]" />
+        <div className="absolute bottom-[10%] left-[5%] w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] lg:w-[350px] lg:h-[350px]
+                        bg-accent rounded-full blur-[80px] sm:blur-[120px] opacity-[0.05] dark:opacity-[0.06]" />
       </div>
 
       <div className="relative w-full max-w-8xl mx-auto">
@@ -81,7 +81,7 @@ export default function Hero() {
             {/* Sous-titre */}
             <motion.h2
               variants={fadeUp}
-              className="text-xl font-medium text-slate-500 dark:text-slate-400 mb-5"
+              className="text-lg sm:text-xl font-medium text-slate-500 dark:text-slate-400 mb-5"
             >
               {personal.title[lang] || personal.title.fr}
             </motion.h2>
@@ -97,25 +97,25 @@ export default function Hero() {
             {/* Stats */}
             <motion.div
               variants={fadeUp}
-              className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8 sm:mb-10"
+              className="grid grid-cols-3 sm:flex sm:flex-wrap justify-center lg:justify-start gap-2 sm:gap-3 mb-8 sm:mb-10"
             >
               {heroStats.map((stat) => {
                 const Icon = icons[stat.icon];
                 return (
                   <div
                     key={stat.id}
-                    className="card card-hover flex items-center gap-3 px-5 py-4"
+                    className="card card-hover flex flex-col sm:flex-row items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-4 text-center sm:text-left"
                   >
-                    <div className="w-11 h-11 rounded-xl bg-primary-50 dark:bg-primary-950/50
-                                    text-primary-500 flex items-center justify-center text-xl flex-shrink-0">
+                    <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-primary-50 dark:bg-primary-950/50
+                                    text-primary-500 flex items-center justify-center text-lg sm:text-xl flex-shrink-0">
                       <Icon />
                     </div>
                     <div>
-                      <strong className="block text-2xl font-extrabold font-heading
+                      <strong className="block text-xl sm:text-2xl font-extrabold font-heading
                                          text-slate-900 dark:text-slate-100 leading-none">
                         {stat.value}{stat.suffix}
                       </strong>
-                      <span className="text-xs font-semibold uppercase tracking-wide text-slate-400">
+                      <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-slate-400">
                         {stat.label[lang] || stat.label.fr}
                       </span>
                     </div>
@@ -153,9 +153,9 @@ export default function Hero() {
             className="relative order-1 lg:order-2 flex justify-center items-center py-6 lg:py-0"
             aria-hidden="true"
           >
-            {/* Anneau tournant */}
+            {/* Anneau tournant - caché sur très petit mobile */}
             <div className="absolute w-[115%] h-[115%] border-2 border-dashed border-primary-400/20
-                            rounded-full animate-rotate" />
+                            rounded-full animate-rotate hidden sm:block" />
             {/* Halo de lumière */}
             <div className="absolute w-[80%] h-[80%] rounded-full
                             bg-gradient-radial from-primary-500/10 to-transparent

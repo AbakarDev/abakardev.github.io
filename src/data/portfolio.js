@@ -30,7 +30,7 @@ export const personal = {
 
   // Fichiers
   cv: '/Cv.pdf',
-  avatar: '/Abakar.jpeg',
+  avatar: '/Abakar.webp',
   photo2: '/photo2.webp',
   logo: '/logo.webp',
 
@@ -94,7 +94,7 @@ export const projects = [
       fr: 'Application orientée suivi des tâches, organisation des activités et collaboration en équipe.',
       en: 'Task-oriented application for activity organization and team collaboration.'
     },
-    image: '/Images/project_man.png',
+    image: '/Images/project_man.webp',
     tags: ['React', 'Node.js'],
     github: 'https://github.com/Abakar702/gestion_projets',
     demo: null,
@@ -106,7 +106,7 @@ export const projects = [
       fr: "Boutique en ligne dynamique avec catalogue produits, gestion des utilisateurs et panier d'achat.",
       en: "Dynamic online store with product catalog, user management, and shopping cart."
     },
-    image: '/Images/project_shop.png',
+    image: '/Images/project_shop.webp',
     tags: ['PHP', 'Laravel'],
     github: 'https://github.com/Abakar702/Site_ecommerce',
     demo: null,
@@ -118,7 +118,7 @@ export const projects = [
       fr: 'Application légère de productivité avec gestion locale des tâches et persistance des données.',
       en: 'Lightweight productivity app with local task management and data persistence.'
     },
-    image: '/Images/project_todo.png',
+    image: '/Images/project_todo.webp',
     tags: ['JavaScript', 'LocalStorage'],
     github: 'https://github.com/Abakar702/MyTodoList',
     demo: null,
@@ -130,7 +130,7 @@ export const projects = [
       fr: 'Ce portfolio professionnel – conçu et développé en vanilla HTML/CSS/JS puis migré vers React + Vite.',
       en: 'This professional portfolio – originally built in vanilla HTML/CSS/JS and migrated to React + Vite.'
     },
-    image: '/Images/portfolio_hero_shot.png',
+    image: '/Images/portfolio_hero_shot.webp',
     tags: ['React', 'Vite', 'Tailwind'],
     github: 'https://github.com/AbakarDev',
     demo: 'https://abakardev.github.io/',
